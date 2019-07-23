@@ -1,5 +1,5 @@
 {
-  "name": "tiny-fns",
+  "name": "tiny-compose-fns",
   "version": "0.2.0",
   "description": "Tiny composeable helper functions.",
   "source": "src/index.js",
