@@ -1,3 +1,4 @@
 # Tiny Functions
 
-Tiny composable helper functions.
+Modern helpers (lodash alternative) that are `compose`able. Follows FP
+"data-last" practices.

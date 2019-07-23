@@ -7,11 +7,11 @@
   "module": "dist/index.mjs",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production microbundle",
+    "build": "microbundle --compress",
     "dev": "microbundle watch",
     "format": "prettier --write 'src/**/*.js' 'README.md'",
     "prebuild": "rimraf dist",
-    "prepublish": "cross-env NODE_ENV=production yarn build",
+    "prepublish": "yarn build",
     "release": "standard-version",
     "test": "jest"
   },
