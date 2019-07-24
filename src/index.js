@@ -285,6 +285,14 @@ export const get = (key, obj, def, p, undef) => {
 }
 
 /**
+ * Returns true if an object has a specified key
+ *
+ * @param {string} key
+ * @param {Object} obj
+ */
+export const has = (key, obj) => Boolean(get(key, obj))
+
+/**
  * Returns an object compose from key-value pairs.
  *
  * @param {Array} arr
