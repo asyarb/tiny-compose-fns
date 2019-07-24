@@ -1,10 +1,13 @@
 # Tiny Functions
 
-Small, modern, and safe "lodash alternative" helpers that are `compose`-able.
+Tiny, modern, and safe "lodash alternative" helpers that are `compose`-able.
 Follows FP "data-last" practices.
 
 This package is side-effect free and tree-shakeable. Uses _very_ new syntax
 (ES2019), so it's recommended to use only in evergreen browsers.
+
+Whenever possible, utilities will use vanilla functions. E.g. `map()` uses
+`Array.prototype.map()`, etc.
 
 ### Why would I use this over `lodash` or `ramda`?
 
@@ -17,7 +20,8 @@ coverage and safety for their utilities (not to mention your other packages are
 probably already using them too).
 
 This project exists as an exercise for myself in addition to being an easy to
-reach for personal use in conjunction with something like `tiny-compose`.
+reach for when I want composeable functions without the overhead of a build step
+with lodash.
 
 ## License
 
