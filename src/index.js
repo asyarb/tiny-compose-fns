@@ -156,7 +156,7 @@ export const take = (num = 1, arr = []) => {
     return []
   }
 
-  return slice(arr, 0, num < 0 ? 0 : num)
+  return arr.slice(0, num < 0 ? 0 : num)
 }
 
 /**
