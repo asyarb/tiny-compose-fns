@@ -22,3 +22,9 @@ reach for personal use in conjunction with something like `tiny-compose`.
 ## License
 
 MIT.
+
+## TODO
+
+- More utilities
+- Test suites
+- Benchmarks
