@@ -428,7 +428,7 @@ export const upperFirst = str =>
 /**
  * Camelcases the provided string.
  *
- * @param {string} str
+ * @param {string} str - the string to uppercase the first character of.
  */
 export const camelCase = (str = '') =>
   str.replace(/^.|-./g, (letter, index) =>
