@@ -426,6 +426,16 @@ export const upperFirst = str =>
   str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
 
 /**
+ * Camelcases the provided string.
+ *
+ * @param {string} str
+ */
+export const camelCase = (str = '') =>
+  str.replace(/^.|-./g, (letter, index) =>
+    index === 0 ? letter.toLowerCase() : letter.substr(1).toUpperCase()
+  )
+
+/**
  * Removes leading and trailing white space from a string.
  *
  * @param {string} str
