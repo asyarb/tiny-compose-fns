@@ -146,6 +146,20 @@ export const tail = (arr = []) => {
 }
 
 /**
+ * Creates a sliced copoy of an array with a specified number of elements taken from the beginning.
+ *
+ * @param {number} num
+ * @param {Array} arr
+ */
+export const take = (num = 1, arr = []) => {
+  if (!(arr !== null && arr.length)) {
+    return []
+  }
+
+  return slice(arr, 0, num < 0 ? 0 : num)
+}
+
+/**
  * Creates an array with all falsy values removed.
  *
  * @param {Array} arr
