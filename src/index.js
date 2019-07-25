@@ -350,28 +350,39 @@ export const has = (key, obj) => Boolean(get(key, obj))
  *
  * @param {Array} arr
  */
-export const fromEntries = (arr = []) => Object.fromEntries(arr)
+export const fromEntries = arr => (isArray(arr) ? Object.fromEntries(arr) : {})
 
 /**
  * Returns an array of key-value pairs from an object.
  *
  * @param {Object} obj
  */
-export const entries = (obj = {}) => Object.entries(obj)
+export const entries = obj => (isPlainObject(obj) ? Object.entries(obj) : [])
 
 /**
  * Returns an array of the objects own enumerable properties.
  *
  * @param {Object} obj
  */
-export const keys = (obj = {}) => Object.keys(obj)
+export const keys = obj => (isPlainObject(obj) ? Object.keys(obj) : [])
 
 /**
  * Returns an array of the objects own enumerable values.
  *
  * @param {Object} obj
  */
-export const values = (obj = {}) => Object.values(obj)
+export const values = obj => (isPlainObject(obj) ? Object.values(obj) : [])
+
+/**
+ * Shallowly merges two objects together.
+ *
+ * @param {Object} target
+ * @param {Object} sources
+ */
+export const merge = (target, ...sources) => {
+  const targetSrc = Object.assign({}, target)
+  return Object.assign(targetSrc, ...sources)
+}
 
 /**
  * Recursively merges objects together.
@@ -395,14 +406,6 @@ export const mergeDeep = (target, source) => {
 
   return output
 }
-
-/**
- * Shallowly merges two objects together.
- *
- * @param {Object} target
- * @param {Object} source
- */
-export const merge = (target = {}, source = {}) => ({ ...source, ...target })
 
 // COLLECTION
 
