@@ -168,7 +168,7 @@ export const tail = arr => {
 }
 
 /**
- * Creates a sliced copoy of an array with a specified number of elements taken from the beginning.
+ * Creates a sliced copy of an array with a specified number of elements taken from the beginning.
  *
  * @param {number} num
  * @param {Array} arr
@@ -181,7 +181,7 @@ export const take = (num = 1, arr) =>
  *
  * @param {Array} arr
  */
-export const compact = (arr = []) => arr.filter(Boolean)
+export const compact = arr => (isArray(arr) ? arr.filter(Boolean) : [])
 
 /**
  * Creates a new array concatenating the provided array with any additional arrays and/or values.
@@ -189,7 +189,7 @@ export const compact = (arr = []) => arr.filter(Boolean)
  * @param {Array} arr
  * @param {Array} vals
  */
-export const concat = (arr = [], vals) => arr.concat(vals)
+export const concat = (arr, vals) => (isArray(arr) ? arr.concat(vals) : [arr])
 
 /**
  * Returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
@@ -197,7 +197,8 @@ export const concat = (arr = [], vals) => arr.concat(vals)
  * @param {function} fn
  * @param {Array} arr
  */
-export const find = (fn = noop, arr = []) => arr.find(fn)
+export const find = (fn, arr) =>
+  isArray(arr) || isPlainObject(arr) ? arr.find(fn) : undefined
 
 /**
  * Tests whether any of the elements in the array pass the test implemented by the provided function.
@@ -205,21 +206,28 @@ export const find = (fn = noop, arr = []) => arr.find(fn)
  * @param {function} fn
  * @param {Array} arr
  */
-export const some = (fn = noop, arr = []) => arr.some(fn)
+export const some = (fn, arr) => (isArray(arr) ? arr.some(fn) : false)
 
 /**
  * Flattens an array a single level deep.
  *
  * @param {Array} arr
  */
-export const flatten = (arr = []) => arr.flat()
+export const flat = arr => (isArray(arr) ? arr.flat() : [])
+
+/**
+ * Flattens an array a specfied number of levels.
+ *
+ * @param {*} arr
+ */
+export const flatDepth = (num, arr) => (isArray(arr) ? arr.flat(num) : [])
 
 /**
  * Recursively flattens an array to a single level.
  *
  * @param {Array} arr
  */
-export const flattenDeep = (arr = []) => arr.flat(Infinity)
+export const flatDeep = arr => (isArray(arr) ? arr.flat(Infinity) : [])
 
 /**
  * Flattens an array a single level deep and maps over that array.
@@ -227,23 +235,24 @@ export const flattenDeep = (arr = []) => arr.flat(Infinity)
  * @param {*} fn
  * @param {Array} arr
  */
-export const flatMap = (fn = noop, arr = []) => arr.flatMap(fn)
+export const flatMap = (fn, arr) => (isArray(arr) ? arr.flatMap(fn) : [])
 
 /**
  * Reverses the values in an array.
  *
  * @param {Array} arr
  */
-export const reverse = (arr = []) => arr.concat().reverse()
+export const reverse = arr => (isArray(arr) ? arr.concat().reverse() : arr)
 
 /**
  * Copies portion of array into a new object based on provided parameters.
  *
- * @param {number} begin
+ * @param {number} start
  * @param {number} end
  * @param {Array} arr
  */
-export const slice = (begin = 0, end = 0, arr = []) => arr.slice(begin, end)
+export const slice = (start = 0, end = 0, arr) =>
+  isArray(arr) ? arr.slice(start, end) : []
 
 /**
  * Checks for a value is in the array.
@@ -252,27 +261,39 @@ export const slice = (begin = 0, end = 0, arr = []) => arr.slice(begin, end)
  * @param {Array} arr
  *
  */
-export const includes = (val, arr = []) => arr.includes(val)
+export const includes = (val, arr) => (isArray(arr) ? arr.includes(val) : false)
 
 /**
- * Sorts an array of object based on an object key provided by a parameter.
+ * Sorts an array.
  *
- * @param {string} key
+ * @param {Array} arr
  */
-const sortBy = key => (a, b) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0)
-export const sort = (key, arr = []) => arr.concat().sort(sortBy(key))
+
+export const sort = arr => (isArray(arr) ? arr.concat().sort() : [])
+
+/**
+ * Sorts an array based on an object key or custom comparator function.
+ *
+ * @param {string} keyOrFn
+ */
+const sortByWith = key => (a, b) =>
+  a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0
+export const sortBy = (keyOrFn, arr) =>
+  isArray(arr)
+    ? arr.concat().sort(isFunction(keyOrFn) ? keyOrFn : sortByWith(keyOrFn))
+    : []
 
 /**
  * Produces a duplicate-free version of an array.
  *
- * @param {*} arr
+ * @param {Array} arr
  */
-export const uniq = (arr = []) => [...new Set(arr)]
+export const uniq = arr => (isArray(arr) ? [...new Set(arr)] : [])
 
 /**
  * Returns a new array with shuffled values of the provided array.
  *
- * @param {*} arr
+ * @param {Array} arr
  */
 export const shuffle = (arr = []) =>
   arr.concat().sort(() => Math.random() - 0.5)
