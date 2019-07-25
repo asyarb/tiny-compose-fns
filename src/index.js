@@ -295,8 +295,8 @@ export const uniq = arr => (isArray(arr) ? [...new Set(arr)] : [])
  *
  * @param {Array} arr
  */
-export const shuffle = (arr = []) =>
-  arr.concat().sort(() => Math.random() - 0.5)
+export const shuffle = arr =>
+  isArray(arr) ? arr.concat().sort(() => Math.random() - 0.5) : []
 
 /**
  * Returns the index of the provided value
@@ -306,7 +306,7 @@ export const shuffle = (arr = []) =>
  *
  * @returns first index of the element in the array, -1 if not found.
  */
-export const indexOf = (val, arr = []) => arr.indexOf(val)
+export const indexOf = (val, arr) => (isArray(arr) ? arr.indexOf(val) : -1)
 
 /**
  * Returns the last index of the provided value
@@ -316,7 +316,8 @@ export const indexOf = (val, arr = []) => arr.indexOf(val)
  *
  * @returns last index of the element in the array, -1 if not found.
  */
-export const lastIndexOf = (val, arr = []) => arr.lastIndexOf(val)
+export const lastIndexOf = (val, arr) =>
+  isArray(arr) ? arr.lastIndexOf(val) : -1
 
 // OBJECT FNS
 
