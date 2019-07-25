@@ -10,9 +10,17 @@ export const noop = () => undefined
  *
  * @param {Object} obj
  */
-export const isEmpty = obj =>
-  [Object, Array].includes((obj || {}).constructor) &&
-  !Object.entries(obj || {}).length
+export const isEmpty = obj => {
+  const tag = toString.call(obj)
+  if (tag === '[object Map]' || tag === '[object Set]') {
+    return !obj.size
+  }
+
+  return (
+    [Object, Array].includes((obj || {}).constructor) &&
+    !Object.entries(obj || {}).length
+  )
+}
 
 /**
  * Returns true if the provided value is null.
