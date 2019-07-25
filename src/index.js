@@ -441,3 +441,19 @@ export const camelCase = (str = '') =>
  * @param {string} str
  */
 export const trim = (str = '') => str.trim()
+
+// ASYNC FUNCS
+
+/**
+ * Returns a single promise when all promises in the iterable array have resolved, or rejects when a single iteratee rejects.
+ *
+ * @param {Array} arr
+ */
+export const allPromises = async arr => await Promise.all(arr)
+
+/**
+ * Returns a promise when the passed value has resolved.
+ *
+ * @param {Promise} val
+ */
+export const resolve = async val => await Promise.resolve(val)
