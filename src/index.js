@@ -174,7 +174,7 @@ export const tail = arr => {
  * @param {Array} arr
  */
 export const take = (num = 1, arr) =>
-  isArray(arr) ? arr.slice(0, num < 0 ? 0 : num) : []
+  isArray(arr) ? arr.slice(0, num === null ? 1 : num < 0 ? 0 : num) : []
 
 /**
  * Creates an array with all falsy values removed.

@@ -442,30 +442,35 @@ describe('Arrays', () => {
   })
 
   describe('take', () => {
-    it('returns empty array if given empty inputs', () => {
+    it('returns empty array if both params are undefined or null', () => {
       expect(take(undefined, undefined)).toMatchObject([])
       expect(take(undefined, null)).toMatchObject([])
-      expect(take(undefined, 1)).toMatchObject([])
-      expect(take(undefined, '')).toMatchObject([])
-      expect(take(undefined, {})).toMatchObject([])
-      expect(take(undefined, [])).toMatchObject([])
-
       expect(take(null, undefined)).toMatchObject([])
       expect(take(null, null)).toMatchObject([])
-      expect(take(null, 1)).toMatchObject([])
-      expect(take(null, '')).toMatchObject([])
-      expect(take(null, {})).toMatchObject([])
-      expect(take(null, [])).toMatchObject([])
-
-      expect(take('foo', undefined)).toMatchObject([])
-      expect(take('foo', null)).toMatchObject([])
-      expect(take('foo', 1)).toMatchObject([])
-      expect(take('foo', '')).toMatchObject([])
-      expect(take('foo', {})).toMatchObject([])
-      expect(take('foo', [])).toMatchObject([])
     })
 
-    it('immutably returns the taken from an array', () => {
+    it('returns one item array if num param is undefined', () => {
+      expect(take(undefined, arr)).toMatchObject([1])
+      expect(take(null, arr)).toMatchObject([1])
+    })
+
+    it('returns empty array if num param is bad', () => {
+      expect(take('', arr)).toMatchObject([])
+      expect(take([], arr)).toMatchObject([])
+      expect(take({}, arr)).toMatchObject([])
+    })
+
+    it('returns empty array if arr param is bad', () => {
+      expect(take(1, {})).toMatchObject([])
+      expect(take(2, 1)).toMatchObject([])
+      expect(take(2, 'foo')).toMatchObject([])
+    })
+
+    it('returns empty array if given empty array', () => {
+      expect(take(2, [])).toMatchObject([])
+    })
+
+    it('immutably returns the taken subarray from an array', () => {
       expect(take(2, arr)).toMatchObject([1, 2])
       expect(arr).toMatchObject([1, 2, 3])
     })
