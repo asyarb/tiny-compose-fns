@@ -1,6 +1,14 @@
 // UTILS
 
 /**
+ * Get the string tag of a value.
+ * @private
+ *
+ * @param {*} val
+ */
+const getTag = val => toString.call(val)
+
+/**
  * Function that only returns undefined.
  */
 export const noop = () => undefined
@@ -11,10 +19,8 @@ export const noop = () => undefined
  * @param {Object} obj
  */
 export const isEmpty = obj => {
-  const tag = toString.call(obj)
-  if (tag === '[object Map]' || tag === '[object Set]') {
-    return !obj.size
-  }
+  const tag = getTag(obj)
+  if (tag === '[object Map]' || tag === '[object Set]') return !obj.size
 
   return (
     [Object, Array].includes((obj || {}).constructor) &&
@@ -55,8 +61,12 @@ export const isNumber = val => typeof val === 'number'
  *
  * @param {*} val
  */
-export const isPlainObject = val =>
-  val && typeof val === 'object' && !Array.isArray(val)
+export const isPlainObject = val => {
+  const tag = getTag(val)
+  if (tag === '[object Map]' || tag === '[object Set]') return false
+
+  return val !== null && typeof val === 'object' && !Array.isArray(val)
+}
 
 /**
  * Returns true if given value is a function.
@@ -99,7 +109,8 @@ export const random = (lower, upper) => {
  *
  * @returns a new array with modified values based on the iteratee.
  */
-export const map = (fn = noop, arr = []) => arr.map(fn)
+export const map = (fn, arr) =>
+  !isFunction(fn) ? [].map(fn) : isArray(arr) ? arr.map(fn) : []
 
 /**
  * Composable version of native Array.filter().
@@ -109,7 +120,8 @@ export const map = (fn = noop, arr = []) => arr.map(fn)
  *
  * @return new array with filtered values based on the iteratee
  */
-export const filter = (fn = noop, arr = []) => arr.filter(fn)
+export const filter = (fn, arr) =>
+  !isFunction(fn) ? [].filter(fn) : isArray(arr) ? arr.filter(fn) : []
 
 /**
  * Composable version of native Array.forEach().
@@ -118,7 +130,8 @@ export const filter = (fn = noop, arr = []) => arr.filter(fn)
  * @param {*} arr
  *
  */
-export const forEach = (fn = noop, arr = []) => arr.forEach(fn)
+export const forEach = (fn, arr) =>
+  !isFunction(fn) ? [].forEach(fn) : isArray(arr) && arr.forEach(fn)
 
 /**
  * Composable version of native Array.join().
@@ -126,28 +139,29 @@ export const forEach = (fn = noop, arr = []) => arr.forEach(fn)
  * @param {*} sep
  * @param {*} arr
  */
-export const join = (sep = '', arr = []) => arr.join(sep)
+export const join = (sep, arr) => (isArray(arr) ? arr.join(sep) : '')
 
 /**
  * Returns the first element of an array.
  *
  * @param {Array} arr - Array to extract the first element from.
  */
-export const first = (arr = []) => arr[0]
+export const first = arr => (isArray(arr) ? arr[0] : undefined)
 
 /**
  * Returns the last element of an array.
  *
  * @param {Array} arr - Array to extract the last element from.
  */
-export const last = (arr = []) => arr[arr.length - 1]
+export const last = arr => (isArray(arr) ? arr[arr.length - 1] : undefined)
 
 /**
  * Returns all but the first element of an array.
  *
  * @param {Array} arr - Array to extract values from.
  */
-export const tail = (arr = []) => {
+export const tail = arr => {
+  if (!isArray(arr)) return []
   const [, ...x] = arr
 
   return x
@@ -159,13 +173,8 @@ export const tail = (arr = []) => {
  * @param {number} num
  * @param {Array} arr
  */
-export const take = (num = 1, arr = []) => {
-  if (!(arr !== null && arr.length)) {
-    return []
-  }
-
-  return arr.slice(0, num < 0 ? 0 : num)
-}
+export const take = (num = 1, arr) =>
+  isArray(arr) ? arr.slice(0, num < 0 ? 0 : num) : []
 
 /**
  * Creates an array with all falsy values removed.
