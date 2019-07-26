@@ -9,6 +9,17 @@
 const getTag = val => toString.call(val)
 
 /**
+ * Returns true if given value is an instance of Map or Set.
+ * @private
+ *
+ * @param {*} obj
+ */
+const isMapOrSet = obj => {
+  const tag = getTag(obj)
+  return tag === '[object Set]' || tag === '[object Map]'
+}
+
+/**
  * Function that only returns undefined.
  */
 export const noop = () => undefined
@@ -18,15 +29,11 @@ export const noop = () => undefined
  *
  * @param {Object} obj
  */
-export const isEmpty = obj => {
-  const tag = getTag(obj)
-  if (tag === '[object Map]' || tag === '[object Set]') return !obj.size
-
-  return (
-    [Object, Array].includes((obj || {}).constructor) &&
-    !Object.entries(obj || {}).length
-  )
-}
+export const isEmpty = obj =>
+  isMapOrSet(obj)
+    ? !obj.size
+    : [Object, Array].includes((obj || {}).constructor) &&
+      !Object.entries(obj || {}).length
 
 /**
  * Returns true if the provided value is null.
@@ -61,12 +68,10 @@ export const isNumber = val => typeof val === 'number'
  *
  * @param {*} val
  */
-export const isPlainObject = val => {
-  const tag = getTag(val)
-  if (tag === '[object Map]' || tag === '[object Set]') return false
-
-  return val !== null && typeof val === 'object' && !Array.isArray(val)
-}
+export const isPlainObject = val =>
+  isMapOrSet(val)
+    ? false
+    : val !== null && typeof val === 'object' && !Array.isArray(val)
 
 /**
  * Returns true if given value is a function.
@@ -414,7 +419,8 @@ export const mergeDeep = (target, source) => {
  *
  * @param {Object} obj
  */
-export const size = (obj = {}) => Object.keys(obj).length
+export const size = (obj = {}) =>
+  isMapOrSet(obj) ? obj.size : obj !== null ? Object.keys(obj).length : 0
 
 // STRING
 
@@ -422,11 +428,11 @@ export const size = (obj = {}) => Object.keys(obj).length
  * Checks if a string begins with a provided substring.
  *
  * @param {string} val - starting value to check for in string.
- * @param {number} start - start index to check from.
  * @param {string} str - string to check.
+ * @param {number} start - start index to check from.
  */
-export const startsWith = (val, start = 0, str = '') =>
-  str.startsWith(val, start)
+export const startsWith = (val, str, start = 0) =>
+  isString(str) ? str.startsWith(val, start) : false
 
 /**
  *
@@ -434,8 +440,8 @@ export const startsWith = (val, start = 0, str = '') =>
  * @param {string} replacement - string to replace instances of matched pattern with.
  * @param {string} str - string to pattern match against.
  */
-export const replace = (regex, replacement = '', str = '') =>
-  str.replace(regex, replacement)
+export const replace = (regex, replacement, str) =>
+  isString(str) ? str.replace(regex, replacement) : ''
 
 /**
  * Returns an array of strings based on the provided delimiter
@@ -443,46 +449,55 @@ export const replace = (regex, replacement = '', str = '') =>
  * @param {string} delim - delimiter
  * @param {string} str - string to split
  */
-export const split = (delim, str = '') => str.split(delim)
+export const split = (delim, str) => (isString(str) ? str.split(delim) : [''])
 
 /**
  * Returns a new copy of a string that has been lowercased.
  *
  * @param {string} str - string to lowercase.
  */
-export const toLower = (str = '') => str.toLowerCase()
+export const lowercase = str => (isString(str) ? str.toLowerCase() : '')
 
 /**
  * Returns a new copy of a string that has been uppercased.
  *
  * @param {string} str - string to uppercase.
  */
-export const toUpper = (str = '') => str.toUpperCase()
+export const UPPERCASE = str => (isString(str) ? str.toUpperCase() : '')
 
 /**
  * Uppercase the first character in a string.
  *
  * @param {string} str - the string to uppercase the first character of.
  */
-export const upperFirst = str =>
-  str ? str.charAt(0).toUpperCase() + str.slice(1) : ''
+export const Upperfirst = str =>
+  isString(str) ? str.charAt(0).toUpperCase() + str.slice(1) : ''
 
 /**
  * Camelcases the provided string.
  *
  * @param {string} str - the string to uppercase the first character of.
  */
-export const camelCase = (str = '') =>
-  str.replace(/^.|-./g, (letter, index) =>
-    index === 0 ? letter.toLowerCase() : letter.substr(1).toUpperCase()
-  )
+export const camelCase = str => {
+  if (!isString(str) || str === '') return ''
+
+  const listNames = str.split(/[\s,_-]+/)
+  let objectName = ''
+
+  for (let x = 0; x < listNames.length; x++) {
+    let item = listNames[x]
+    objectName += item[0].toUpperCase() + item.substring(1).toLowerCase()
+  }
+
+  return objectName[0].toLowerCase() + objectName.substring(1)
+}
 
 /**
  * Removes leading and trailing white space from a string.
  *
  * @param {string} str
  */
-export const trim = (str = '') => str.trim()
+export const trim = str => (isString(str) ? str.trim() : '')
 
 // ASYNC FUNCS
 
