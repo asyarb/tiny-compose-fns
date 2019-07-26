@@ -506,7 +506,7 @@ export const trim = str => (isString(str) ? str.trim() : '')
  *
  * @param {Array} arr
  */
-export const allPromises = async arr => await Promise.all(arr)
+export const allProm = async arr => (isArray(arr) ? await Promise.all(arr) : [])
 
 /**
  * Returns a promise when the passed value has resolved.
