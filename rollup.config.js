@@ -15,11 +15,15 @@ const makeExternalPredicate = externalArr => {
 }
 
 export default {
-  input: 'src/index.js',
-  output: [
-    { file: pkg.main, format: 'cjs', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true },
-  ],
+  input: {
+    index: 'src/index.js',
+    fp: 'src/curried.js',
+  },
+  output: {
+    dir: 'dist',
+    format: 'cjs',
+    sourcemap: true,
+  },
   external: makeExternalPredicate([
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),

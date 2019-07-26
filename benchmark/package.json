@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "benchmark": "node benchmark.js"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "lodash": "^4.17.15"
+  }
+}

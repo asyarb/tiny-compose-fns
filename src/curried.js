@@ -23,7 +23,7 @@ import {
   startsWith as startsWithB,
   replace as replaceB,
   split as splitB,
-} from '../src'
+} from './index'
 
 export const map = curry(mapB)
 export const filter = curry(filterB)
@@ -79,4 +79,4 @@ export {
   reverse,
   sort,
   size,
-} from '../src'
+} from './index'

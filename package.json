@@ -13,7 +13,8 @@
     "prebuild": "rimraf dist",
     "prepublish": "yarn build",
     "release": "standard-version",
-    "test": "jest"
+    "test": "jest",
+    "benchmark": "cd benchmark && yarn benchmark"
   },
   "homepage": "https://github.com/asyarb/tiny-compose-fns",
   "repository": {
