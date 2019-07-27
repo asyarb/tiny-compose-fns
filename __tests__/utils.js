@@ -7,7 +7,7 @@ import {
   isNumber,
   isPlainObject,
   isFunction,
-} from '../src'
+} from '../src/base'
 
 describe('Utils', () => {
   describe('noop', () => {

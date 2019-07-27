@@ -17,7 +17,7 @@ const makeExternalPredicate = externalArr => {
 export default {
   input: {
     index: 'src/index.js',
-    fp: 'src/curried.js',
+    noFp: 'src/base.js',
   },
   output: {
     dir: 'dist',

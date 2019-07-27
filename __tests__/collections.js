@@ -1,4 +1,4 @@
-import { size } from '../src'
+import { size } from '../src/base'
 
 describe('size', () => {
   const arr = [1, 2, 3]

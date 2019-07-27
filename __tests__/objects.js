@@ -7,7 +7,7 @@ import {
   noop,
   values,
   merge,
-} from '../src'
+} from '../src/base'
 
 // UTILS
 

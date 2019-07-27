@@ -8,7 +8,7 @@ import {
   UPPERCASE,
   Upperfirst,
   trim,
-} from '../src'
+} from '../src/base'
 
 describe('startsWith', () => {
   const str = 'fooBarBaz'

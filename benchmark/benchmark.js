@@ -10,8 +10,7 @@ const {
   filter: filterB,
   uniq: uniqB,
   isString: isStringB,
-} = require('../dist/index.js')
-
+} = require('../dist/noFp.js')
 const {
   map,
   compact,
@@ -19,7 +18,7 @@ const {
   filter,
   uniq,
   isString,
-} = require('../dist/fp.js')
+} = require('../dist/index.js')
 
 // Testing Setup
 const arr = [1, 2, 3, 1, 2, 3, undefined, null, 'foo bar baz', 'hello world']

@@ -26,7 +26,7 @@ import {
   indexOf,
   lastIndexOf,
   chunk,
-} from '../src'
+} from '../src/base'
 
 const arr = [1, 2, 3]
 const users = [
