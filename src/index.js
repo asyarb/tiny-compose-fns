@@ -26,6 +26,16 @@ import {
   chunk as chunkB,
 } from './base'
 
+/**
+ * Call a sequence of curried functions.
+ */
+export const compose = (...c) => (...a) => {
+  let i = c.length - 1
+  a = c[i](...a)
+  while (i--) a = c[i](a)
+  return a
+}
+
 export const map = curry(mapB)
 export const filter = curry(filterB)
 export const forEach = curry(forEachB)

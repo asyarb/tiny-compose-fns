@@ -1,5 +1,4 @@
 const Benchmark = require('benchmark')
-const compose = require('compose-tiny')
 
 const _ = require('lodash/fp')
 const __ = require('lodash')
@@ -18,6 +17,7 @@ const {
   filter,
   uniq,
   isString,
+  compose,
 } = require('../dist/index.js')
 
 // Testing Setup
@@ -36,6 +36,9 @@ suite.add('lodash/fp', () => {
 suite.add('lodash', () =>
   __.map(__.filter(__.uniq(__.compact(arr)), __.isString), __.camelCase)
 )
+suite.add('tinyFns', () =>
+  mapB(camelCaseB, filterB(isStringB, uniqB(compactB(arr))))
+)
 suite.add('curryTinyFns', () => {
   compose(
     map(camelCase),
@@ -44,8 +47,10 @@ suite.add('curryTinyFns', () => {
     compact
   )(arr)
 })
-suite.add('tinyFns', () =>
-  mapB(camelCaseB, filterB(isStringB, uniqB(compactB(arr))))
+suite.add('vanilla JS', () =>
+  [...new Set(arr.filter(Boolean))]
+    .filter(i => typeof i === 'string')
+    .map(camelCaseB)
 )
 
 suite
