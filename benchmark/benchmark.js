@@ -2,6 +2,8 @@ const Benchmark = require('benchmark')
 
 const _ = require('lodash/fp')
 const __ = require('lodash')
+const R = require('ramda')
+const RA = require('ramda-adjunct')
 const {
   map: mapB,
   compact: compactB,
@@ -22,9 +24,19 @@ const {
 
 // Testing Setup
 const arr = [1, 2, 3, 1, 2, 3, undefined, null, 'foo bar baz', 'hello world']
-
 const suite = new Benchmark.Suite()
 
+suite.add('tinyFns/noFp', () =>
+  mapB(camelCaseB, filterB(isStringB, uniqB(compactB(arr))))
+)
+suite.add('tinyFns', () => {
+  compose(
+    map(camelCase),
+    filter(isString),
+    uniq,
+    compact
+  )(arr)
+})
 suite.add('lodash/fp', () => {
   _.compose(
     _.map(camelCase),
@@ -36,17 +48,14 @@ suite.add('lodash/fp', () => {
 suite.add('lodash', () =>
   __.map(__.filter(__.uniq(__.compact(arr)), __.isString), __.camelCase)
 )
-suite.add('tinyFns', () =>
-  mapB(camelCaseB, filterB(isStringB, uniqB(compactB(arr))))
-)
-suite.add('curryTinyFns', () => {
-  compose(
-    map(camelCase),
-    filter(isString),
-    uniq,
-    compact
+suite.add('ramda', () =>
+  R.compose(
+    R.map(_.camelCase),
+    R.filter(RA.isString),
+    R.uniq,
+    RA.compact
   )(arr)
-})
+)
 suite.add('vanilla JS', () =>
   [...new Set(arr.filter(Boolean))]
     .filter(i => typeof i === 'string')
