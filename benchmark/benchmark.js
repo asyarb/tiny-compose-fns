@@ -2,6 +2,16 @@ const Benchmark = require('benchmark')
 const compose = require('compose-tiny')
 
 const _ = require('lodash/fp')
+const __ = require('lodash')
+const {
+  map: mapB,
+  compact: compactB,
+  camelCase: camelCaseB,
+  filter: filterB,
+  uniq: uniqB,
+  isString: isStringB,
+} = require('../dist/index.js')
+
 const {
   map,
   compact,
@@ -16,7 +26,7 @@ const arr = [1, 2, 3, 1, 2, 3, undefined, null, 'foo bar baz', 'hello world']
 
 const suite = new Benchmark.Suite()
 
-suite.add('lodash', () => {
+suite.add('lodash/fp', () => {
   _.compose(
     _.map(camelCase),
     _.filter(isString),
@@ -24,7 +34,10 @@ suite.add('lodash', () => {
     _.compact
   )(arr)
 })
-suite.add('tinyFns', () => {
+suite.add('lodash', () =>
+  __.map(__.filter(__.uniq(__.compact(arr)), __.isString), __.camelCase)
+)
+suite.add('curryTinyFns', () => {
   compose(
     map(camelCase),
     filter(isString),
@@ -32,6 +45,9 @@ suite.add('tinyFns', () => {
     compact
   )(arr)
 })
+suite.add('tinyFns', () =>
+  mapB(camelCaseB, filterB(isStringB, uniqB(compactB(arr))))
+)
 
 suite
   .on('cycle', event => console.log(String(event.target)))
