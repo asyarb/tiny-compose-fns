@@ -188,7 +188,7 @@ export const take = (num = 1, arr) =>
  * @param {*} arr - arr to split
  */
 export const chunk = (size, arr) =>
-  isArray(arr)
+  isArray(arr) && isNumber(size)
     ? arr.reduce(
         (array, item, idx) =>
           idx % size === 0
