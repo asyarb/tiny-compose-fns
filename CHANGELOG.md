@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/asyarb/tiny-compose-fns/compare/v0.4.0...v0.4.1) (2019-07-27)
+
+
+### Bug Fixes
+
+* remove more unused deps ([5f29570](https://github.com/asyarb/tiny-compose-fns/commit/5f29570))
+* remove unnecessary dep ([d08cced](https://github.com/asyarb/tiny-compose-fns/commit/d08cced))
+
+
+
 ## [0.4.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.3.1...v0.4.0) (2019-07-27)
 
 
