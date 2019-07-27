@@ -182,6 +182,23 @@ export const take = (num = 1, arr) =>
   isArray(arr) ? arr.slice(0, num === null ? 1 : num < 0 ? 0 : num) : []
 
 /**
+ * Creates an array of elements split into groups the length of size.
+ *
+ * @param {*} size - size of groups to split
+ * @param {*} arr - arr to split
+ */
+export const chunk = (size, arr) =>
+  isArray(arr)
+    ? arr.reduce(
+        (array, item, idx) =>
+          idx % size === 0
+            ? [...array, [item]]
+            : [...array.slice(0, -1), [...array.slice(-1)[0], item]],
+        []
+      )
+    : []
+
+/**
  * Creates an array with all falsy values removed.
  *
  * @param {Array} arr
