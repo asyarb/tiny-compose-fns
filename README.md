@@ -1,34 +1,60 @@
-# Tiny Functions
+# Tiny Functions <!-- omit in toc -->
 
-Tiny, modern, and safe "lodash alternative" helpers that are `compose`-able.
-Follows FP "data-last" practices.
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+
+Tiny and safe utility functions that are `compose`able. Follows functional
+programming "data-last" practices.
+
+Whenever possible, utilities functions will use vanilla functions. For example,
+`map()` uses `Array.prototype.map()`, etc.
 
 This package is side-effect free and tree-shakeable. Uses _very_ new syntax
-(ES2019), so it's recommended to use only in evergreen browsers.
+(ES2019), so it's recommended to polyfill with `core-js` or other solution if
+using in non-evergreen browsers.
 
-Whenever possible, utilities will use vanilla functions. E.g. `map()` uses
-`Array.prototype.map()`, etc.
+## Installation
 
-### Why would I use this over `lodash` or `ramda`?
+```bash
+# yarn
+yarn add tiny-compose-fns
 
-**You probably shouldn't**.
+# npm
+npm i tiny-compose-fns
+```
 
-Unless you really need incredibly small bundlesizes for a project, `lodash` or
-`ramda` with their respective `babel` plugins is likely a better idea. Both will
-provide better browser support, small enough bundle sizes, and better test
-coverage and safety for their utilities (not to mention your other packages are
-probably already using them too).
+## Usage
 
-This project exists as an exercise for myself in addition to being an easy to
-reach for when I want composeable functions without the overhead of a build step
-with lodash.
+All utilites are provided as named exports:
+
+```js
+import {
+  map,
+  compact,
+  camelCase,
+  filter,
+  uniq,
+  isString,
+  compose,
+} from 'tiny-compose-fns'
+
+const arr = [1, 2, 3, 1, 2, 3, undefined, null, 'foo bar baz', 'hello world']
+
+const newArr = compose(
+  map(camelCase),
+  filter(isString),
+  uniq,
+  compact
+)(arr) // => ['fooBarBaz', 'helloWorld']
+```
+
+If you want non-curried utilities, use the `/nofp` target instead.
+
+```js
+import { map, isString, filter } from 'tiny-compose-fns/noFp'
+```
 
 ## License
 
 MIT.
-
-## TODO
-
-- More utilities
-- Test suites
-- Benchmarks
