@@ -4,6 +4,7 @@
 - [Usage](#usage)
   - [Why wouldn't I just use `ramda` or `lodash`/`lodash/fp`?](#why-wouldnt-i-just-use-ramda-or-lodashlodashfp)
     - [Benchmark](#benchmark)
+- [Credits](#credits)
 - [License](#license)
 
 Tiny, performant, and safe utility functions that are compatible with `compose`.
@@ -97,6 +98,17 @@ mostly keep up.
 
 That being said, the above may or may not apply for your project, so test what
 works best for you and your project!
+
+## Credits
+
+This project is possible thanks to the following wonderful projects:
+
+- [`dlv`](https://github.com/developit/dlv) for the lightweight implementation
+  of `get` and `has`.
+- [`compose-tiny`](https://github.com/hipstersmoothie/compose-tiny) for the fast
+  and awesome implementation of `compose`
+- [`curriable`](https://github.com/planttheidea/curriable) for the lightweight
+  implementation of `curry`.
 
 ## License
 
