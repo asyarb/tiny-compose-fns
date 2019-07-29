@@ -13,26 +13,35 @@ const makeExternalPredicate = externalArr => {
   return id => pattern.test(id)
 }
 
-export default {
-  input: {
-    index: 'src/index.js',
-    noFp: 'src/base.js',
+export default [
+  {
+    input: {
+      index: 'src/index.js',
+      noFp: 'src/base.js',
+    },
+    output: [
+      {
+        dir: 'dist',
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        dir: 'dist/mjs',
+        format: 'esm',
+        sourcemap: true,
+      },
+    ],
+    external: makeExternalPredicate([
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ]),
+    plugins: [
+      clear({
+        targets: ['dist'],
+      }),
+      babel(),
+      IS_PROD && terser(),
+      filesize(),
+    ],
   },
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: true,
-  },
-  external: makeExternalPredicate([
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
-  ]),
-  plugins: [
-    clear({
-      targets: ['dist'],
-    }),
-    babel(),
-    IS_PROD && terser(),
-    filesize(),
-  ],
-}
+]

@@ -3,10 +3,8 @@
   "version": "0.4.1",
   "description": "Tiny composeable helper functions.",
   "sideEffects": false,
-  "source": "src/index.js",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "unpkg": "dist/index.umd.js",
+  "main": "index.js",
+  "module": "index.mjs",
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
     "format": "prettier --write 'src/**/*.js' 'rollup.config.js' 'README.md'",
