@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.4.1...v0.5.0) (2019-07-29)
+
+
+### Features
+
+* esm support ([5748e59](https://github.com/asyarb/tiny-compose-fns/commit/5748e59))
+* root level exports for noFp ([5f43e85](https://github.com/asyarb/tiny-compose-fns/commit/5f43e85))
+
+
+
 ### [0.4.1](https://github.com/asyarb/tiny-compose-fns/compare/v0.4.0...v0.4.1) (2019-07-27)
 
 
