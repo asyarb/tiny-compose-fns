@@ -357,6 +357,16 @@ export const max = arr =>
 export const min = arr =>
   isArray(arr) && arr.length !== 0 ? Math.min(...arr) : undefined
 
+/**
+ * Returns a random element from the provided array.
+ *
+ * @param {Array} arr
+ */
+export const sample = arr =>
+  isArray(arr) && arr.length !== 0
+    ? arr[Math.floor(Math.random() * arr.length)]
+    : undefined
+
 // OBJECT FNS
 
 /**

@@ -28,6 +28,7 @@ import {
   chunk,
   max,
   min,
+  sample,
 } from '../dist/noFp'
 
 const arr = [1, 2, 3]
@@ -725,5 +726,28 @@ describe('min', () => {
 
   it('returns the minimum value of an array', () => {
     expect(min(arr)).toBe(1)
+  })
+})
+
+describe('sample', () => {
+  it('returns undefined if given a falsey value', () => {
+    expect(sample()).toBeUndefined()
+    expect(sample(null)).toBeUndefined()
+    expect(sample(false)).toBeUndefined()
+  })
+
+  it('returns undefined if given an empty array', () => {
+    expect(sample([])).toBeUndefined()
+  })
+
+  it('returns undefined if given a non-array', () => {
+    expect(sample({})).toBeUndefined()
+    expect(sample(noop)).toBeUndefined()
+  })
+
+  it('returns a random value from the array', () => {
+    const randomNum = sample(arr)
+
+    expect(arr.includes(randomNum)).toBe(true)
   })
 })
