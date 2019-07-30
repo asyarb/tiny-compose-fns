@@ -93,4 +93,5 @@ export {
   size,
   max,
   min,
+  StartCase,
 } from './base'

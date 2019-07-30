@@ -526,6 +526,20 @@ export const camelCase = str => {
 }
 
 /**
+ * Startcases the provided string.
+ *
+ * @param {string} str - the string to uppercase the first character of.
+ */
+
+export const StartCase = str =>
+  isString(str)
+    ? str
+        .replace(/_/g, ' ')
+        .replace(/([a-z])([A-Z])/g, (str, $1, $2) => $1 + ' ' + $2)
+        .replace(/(\s|^)(\w)/g, (str, $1, $2) => $1 + $2.toUpperCase())
+    : ''
+
+/**
  * Removes leading and trailing white space from a string.
  *
  * @param {string} str

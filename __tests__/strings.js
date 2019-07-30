@@ -8,6 +8,7 @@ import {
   UPPERCASE,
   Upperfirst,
   trim,
+  StartCase,
 } from '../dist/noFp'
 
 describe('startsWith', () => {
@@ -249,5 +250,28 @@ describe('trim', () => {
     expect(trim('  foo bar   ')).toBe('foo bar')
     expect(trim('foo bar   ')).toBe('foo bar')
     expect(trim('   foo bar')).toBe('foo bar')
+  })
+})
+
+describe('StartCase', () => {
+  it('returns an empty string on undefined or null', () => {
+    expect(StartCase()).toBe('')
+    expect(StartCase(null)).toBe('')
+  })
+
+  it('returns an empty string if not given a string', () => {
+    expect(StartCase(123)).toBe('')
+    expect(StartCase([])).toBe('')
+    expect(StartCase({})).toBe('')
+    expect(StartCase(noop)).toBe('')
+  })
+
+  it('returns an empty string if given an empty string', () => {
+    expect(StartCase('')).toBe('')
+  })
+
+  it('StartCases a string', () => {
+    expect(StartCase('Foo Bar')).toBe('Foo Bar')
+    expect(StartCase('here we go')).toBe('Here We Go')
   })
 })
