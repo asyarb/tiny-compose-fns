@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.6.0...v0.7.0) (2019-07-30)
+
+
+### Features
+
+* max and min ([c6a8513](https://github.com/asyarb/tiny-compose-fns/commit/c6a8513))
+* sample array util ([ef392be](https://github.com/asyarb/tiny-compose-fns/commit/ef392be))
+* startcase util ([cf5c02f](https://github.com/asyarb/tiny-compose-fns/commit/cf5c02f))
+
+
+
 ## [0.6.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.5.0...v0.6.0) (2019-07-30)
 
 
