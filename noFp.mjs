@@ -1,1 +1,1 @@
-module.exports = require('./dist/mjs/noFp.js')
+export * from './dist/mjs/noFp.js'

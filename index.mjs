@@ -1,1 +1,1 @@
-module.exports = require('./dist/mjs/index.js')
+export * from './dist/mjs/index.js'

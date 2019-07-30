@@ -1,4 +1,4 @@
-import { size } from '../src/base'
+import { size } from '../dist/noFp'
 
 describe('size', () => {
   const arr = [1, 2, 3]

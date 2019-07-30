@@ -7,7 +7,7 @@ import {
   noop,
   values,
   merge,
-} from '../src/base'
+} from '../dist/noFp'
 
 // UTILS
 
