@@ -91,8 +91,8 @@ export const isArray = val => Array.isArray(val)
 /**
  * Returns a random number between the provided range
  *
- * @param {*} lower - lower bound of the random range
- * @param {*} upper - upper bound of the random range
+ * @param {number} lower - lower bound of the random range
+ * @param {number} upper - upper bound of the random range
  */
 export const random = (lower, upper) => {
   if (!upper || typeof upper === 'boolean') {
@@ -107,10 +107,10 @@ export const random = (lower, upper) => {
 // ARRAY FNS
 
 /**
- * Composable version of native Array.map().
+ * Returns a new array based on the result of the passed function.
  *
- * @param {*} fn
- * @param {*} arr
+ * @param {function} fn
+ * @param {Array} arr
  *
  * @returns a new array with modified values based on the iteratee.
  */
@@ -118,10 +118,10 @@ export const map = (fn, arr) =>
   !isFunction(fn) ? [].map(fn) : isArray(arr) ? arr.map(fn) : []
 
 /**
- * Composable version of native Array.filter().
+ * Returns a new array composed of values that return true from the passed function.
  *
- * @param {*} fn - iteratee to run on every element
- * @param {*} arr
+ * @param {function} fn - iteratee to run on every element
+ * @param {Array} arr
  *
  * @return new array with filtered values based on the iteratee
  */
@@ -129,20 +129,20 @@ export const filter = (fn, arr) =>
   !isFunction(fn) ? [].filter(fn) : isArray(arr) ? arr.filter(fn) : []
 
 /**
- * Composable version of native Array.forEach().
+ * Runs a function for every element in the passed array.
  *
- * @param {*} fn
- * @param {*} arr
+ * @param {function} fn
+ * @param {Array} arr
  *
  */
 export const forEach = (fn, arr) =>
   !isFunction(fn) ? [].forEach(fn) : isArray(arr) && arr.forEach(fn)
 
 /**
- * Composable version of native Array.join().
+ * Returns a string with the specified separator delimiting a provided array.
  *
- * @param {*} sep
- * @param {*} arr
+ * @param {string} sep
+ * @param {Array} arr
  */
 export const join = (sep, arr) => (isArray(arr) ? arr.join(sep) : '')
 
@@ -184,8 +184,8 @@ export const take = (num = 1, arr) =>
 /**
  * Creates an array of elements split into groups the length of size.
  *
- * @param {*} size - size of groups to split
- * @param {*} arr - arr to split
+ * @param {number} size - size of groups to split
+ * @param {Array} arr - arr to split
  */
 export const chunk = (size, arr) =>
   isArray(arr) && isNumber(size)
@@ -324,7 +324,7 @@ export const shuffle = arr =>
  * Returns the index of the provided value
  *
  * @param {*} val
- * @param {*} arr
+ * @param {Array} arr
  *
  * @returns first index of the element in the array, -1 if not found.
  */
@@ -334,12 +334,28 @@ export const indexOf = (val, arr) => (isArray(arr) ? arr.indexOf(val) : -1)
  * Returns the last index of the provided value
  *
  * @param {*} val
- * @param {*} arr
+ * @param {Array} arr
  *
  * @returns last index of the element in the array, -1 if not found.
  */
 export const lastIndexOf = (val, arr) =>
   isArray(arr) ? arr.lastIndexOf(val) : -1
+
+/**
+ * Computes the maximum value of array. If array is empty or falsey, undefined is returned.
+ *
+ * @param {Array} arr
+ */
+export const max = arr =>
+  isArray(arr) && arr.length !== 0 ? Math.max(...arr) : undefined
+
+/**
+ * Computes the minimum value of array. If array is empty or falsey, undefined is returned.
+ *
+ * @param {Array} arr
+ */
+export const min = arr =>
+  isArray(arr) && arr.length !== 0 ? Math.min(...arr) : undefined
 
 // OBJECT FNS
 

@@ -26,6 +26,8 @@ import {
   indexOf,
   lastIndexOf,
   chunk,
+  max,
+  min,
 } from '../dist/noFp'
 
 const arr = [1, 2, 3]
@@ -691,5 +693,37 @@ describe('chunk', () => {
     expect(chunk(2, arr)).toEqual([[1, 2], [3]])
     expect(chunk(3, arr)).toEqual([[1, 2, 3]])
     expect(chunk(4, arr)).toEqual([[1, 2, 3]])
+  })
+})
+
+describe('max', () => {
+  it('returns undefined if array is falsey', () => {
+    expect(max()).toBeUndefined()
+    expect(max(null)).toBeUndefined()
+    expect(max(false)).toBeUndefined()
+  })
+
+  it('returns undefined if array is empty', () => {
+    expect(max([])).toBeUndefined()
+  })
+
+  it('returns the maximum value of an array', () => {
+    expect(max(arr)).toBe(3)
+  })
+})
+
+describe('min', () => {
+  it('returns undefined if array is falsey', () => {
+    expect(min()).toBeUndefined()
+    expect(min(null)).toBeUndefined()
+    expect(min(false)).toBeUndefined()
+  })
+
+  it('returns undefined if array is empty', () => {
+    expect(min([])).toBeUndefined()
+  })
+
+  it('returns the minimum value of an array', () => {
+    expect(min(arr)).toBe(1)
   })
 })

@@ -91,4 +91,6 @@ export {
   reverse,
   sort,
   size,
+  max,
+  min,
 } from './base'
