@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.5.0...v0.6.0) (2019-07-30)
+
+
+### Features
+
+* use es6 module export for mjs ([ed3f2d3](https://github.com/asyarb/tiny-compose-fns/commit/ed3f2d3))
+
+
+
 ## [0.5.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.4.1...v0.5.0) (2019-07-29)
 
 
