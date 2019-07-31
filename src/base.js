@@ -556,14 +556,14 @@ export const lowercase = str => (isString(str) ? str.toLowerCase() : '')
  *
  * @param {string} str - string to uppercase.
  */
-export const UPPERCASE = str => (isString(str) ? str.toUpperCase() : '')
+export const uppercase = str => (isString(str) ? str.toUpperCase() : '')
 
 /**
  * Uppercase the first character in a string.
  *
  * @param {string} str - the string to uppercase the first character of.
  */
-export const Upperfirst = str =>
+export const upperFirst = str =>
   isString(str) ? str.charAt(0).toUpperCase() + str.slice(1) : ''
 
 /**
@@ -591,7 +591,7 @@ export const camelCase = str => {
  * @param {string} str - the string to uppercase the first character of.
  */
 
-export const StartCase = str =>
+export const startCase = str =>
   isString(str)
     ? str
         .replace(/_/g, ' ')

@@ -5,10 +5,10 @@ import {
   noop,
   lowercase,
   camelCase,
-  UPPERCASE,
-  Upperfirst,
+  uppercase,
+  upperFirst,
   trim,
-  StartCase,
+  startCase,
 } from '../dist/noFp'
 
 describe('startsWith', () => {
@@ -160,49 +160,49 @@ describe('lowercase', () => {
   })
 })
 
-describe('UPPERCASE', () => {
+describe('uppercase', () => {
   it('returns an empty string on undefined or null', () => {
-    expect(UPPERCASE()).toBe('')
-    expect(UPPERCASE(null)).toBe('')
+    expect(uppercase()).toBe('')
+    expect(uppercase(null)).toBe('')
   })
 
   it('returns an empty string if not given a string', () => {
-    expect(UPPERCASE(123)).toBe('')
-    expect(UPPERCASE([])).toBe('')
-    expect(UPPERCASE({})).toBe('')
-    expect(UPPERCASE(noop)).toBe('')
+    expect(uppercase(123)).toBe('')
+    expect(uppercase([])).toBe('')
+    expect(uppercase({})).toBe('')
+    expect(uppercase(noop)).toBe('')
   })
 
   it('returns an empty string if given an empty string', () => {
-    expect(UPPERCASE('')).toBe('')
+    expect(uppercase('')).toBe('')
   })
 
-  it('UPPERCASEs a string', () => {
-    expect(UPPERCASE('foo')).toBe('FOO')
-    expect(UPPERCASE('WeIrD cASe')).toBe('WEIRD CASE')
+  it('uppercases a string', () => {
+    expect(uppercase('foo')).toBe('FOO')
+    expect(uppercase('WeIrD cASe')).toBe('WEIRD CASE')
   })
 })
 
-describe('Upperfirst', () => {
+describe('upperFirst', () => {
   it('returns an empty string on undefined or null', () => {
-    expect(Upperfirst()).toBe('')
-    expect(Upperfirst(null)).toBe('')
+    expect(upperFirst()).toBe('')
+    expect(upperFirst(null)).toBe('')
   })
 
   it('returns an empty string if not given a string', () => {
-    expect(Upperfirst(123)).toBe('')
-    expect(Upperfirst([])).toBe('')
-    expect(Upperfirst({})).toBe('')
-    expect(Upperfirst(noop)).toBe('')
+    expect(upperFirst(123)).toBe('')
+    expect(upperFirst([])).toBe('')
+    expect(upperFirst({})).toBe('')
+    expect(upperFirst(noop)).toBe('')
   })
 
   it('returns an empty string if given an empty string', () => {
-    expect(Upperfirst('')).toBe('')
+    expect(upperFirst('')).toBe('')
   })
 
-  it('Upperfirsts a string', () => {
-    expect(Upperfirst('foo')).toBe('Foo')
-    expect(Upperfirst('weIrD cASe')).toBe('WeIrD cASe')
+  it('upperFirsts a string', () => {
+    expect(upperFirst('foo')).toBe('Foo')
+    expect(upperFirst('weIrD cASe')).toBe('WeIrD cASe')
   })
 })
 
@@ -253,25 +253,25 @@ describe('trim', () => {
   })
 })
 
-describe('StartCase', () => {
+describe('startCase', () => {
   it('returns an empty string on undefined or null', () => {
-    expect(StartCase()).toBe('')
-    expect(StartCase(null)).toBe('')
+    expect(startCase()).toBe('')
+    expect(startCase(null)).toBe('')
   })
 
   it('returns an empty string if not given a string', () => {
-    expect(StartCase(123)).toBe('')
-    expect(StartCase([])).toBe('')
-    expect(StartCase({})).toBe('')
-    expect(StartCase(noop)).toBe('')
+    expect(startCase(123)).toBe('')
+    expect(startCase([])).toBe('')
+    expect(startCase({})).toBe('')
+    expect(startCase(noop)).toBe('')
   })
 
   it('returns an empty string if given an empty string', () => {
-    expect(StartCase('')).toBe('')
+    expect(startCase('')).toBe('')
   })
 
-  it('StartCases a string', () => {
-    expect(StartCase('Foo Bar')).toBe('Foo Bar')
-    expect(StartCase('here we go')).toBe('Here We Go')
+  it('startCases a string', () => {
+    expect(startCase('Foo Bar')).toBe('Foo Bar')
+    expect(startCase('here we go')).toBe('Here We Go')
   })
 })
