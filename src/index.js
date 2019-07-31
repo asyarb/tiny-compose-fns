@@ -24,6 +24,7 @@ import {
   replace as replaceB,
   split as splitB,
   chunk as chunkB,
+  times as timesB,
 } from './base'
 
 /**
@@ -59,6 +60,7 @@ export const startsWith = curry(startsWithB)
 export const replace = curry(replaceB)
 export const split = curry(splitB)
 export const chunk = curry(chunkB)
+export const times = curry(timesB)
 
 export {
   noop,
@@ -95,4 +97,7 @@ export {
   min,
   StartCase,
   sample,
+  uniqueId,
+  toArray,
+  castArray,
 } from './base'

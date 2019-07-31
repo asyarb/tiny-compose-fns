@@ -1,4 +1,4 @@
-// UTILS
+// INTERNAL HELPERS
 
 /**
  * Get the string tag of a value.
@@ -19,10 +19,42 @@ const isMapOrSet = obj => {
   return tag === '[object Set]' || tag === '[object Map]'
 }
 
+// UTILS
+
 /**
  * Function that only returns undefined.
  */
 export const noop = () => undefined
+
+/**
+ * Invokes the provided function num times, returning an array of the results of each invocation. Function is provided the index as an argument.
+ *
+ * @param {function} fn
+ * @param {number} num
+ */
+export const times = (fn, num) => {
+  const arr = []
+  for (let i = 0; i < num; i++) {
+    arr[i] = fn(i)
+  }
+
+  return arr
+}
+
+/**
+ * Generates a unique ID. If prefix is given, the ID is appended to it.
+ *
+ * @param {string} prefix
+ */
+export const uniqueId = (() => {
+  let num = 0
+
+  return prefix => {
+    prefix = prefix ? String(prefix) : ''
+    num += 1
+    return prefix + num
+  }
+})()
 
 /**
  * Returns true if the provided object is empty.
@@ -104,7 +136,25 @@ export const random = (lower, upper) => {
   return randomic >= lower ? randomic : random(lower, upper)
 }
 
+/**
+ * Casts provided value as an array if it is not one
+ *
+ * @param {Array} val
+ */
+export const castArray = val => (isArray(val) ? val : [val])
+
 // ARRAY FNS
+/**
+ * Converts provided value to an array.
+ *
+ * @param {Array} val
+ */
+export const toArray = val =>
+  isPlainObject(val)
+    ? Array.from(Object.values(val))
+    : val
+    ? Array.from(val)
+    : []
 
 /**
  * Returns a new array based on the result of the passed function.

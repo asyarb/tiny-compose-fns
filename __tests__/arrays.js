@@ -29,6 +29,8 @@ import {
   max,
   min,
   sample,
+  toArray,
+  castArray,
 } from '../dist/noFp'
 
 const arr = [1, 2, 3]
@@ -749,5 +751,38 @@ describe('sample', () => {
     const randomNum = sample(arr)
 
     expect(arr.includes(randomNum)).toBe(true)
+  })
+})
+
+describe('castArray', () => {
+  it('returns an empty array if given an array', () => {
+    expect(castArray([])).toEqual([])
+  })
+
+  it('returns an array with the value in it', () => {
+    expect(castArray(1)).toEqual([1])
+    expect(castArray({ foo: 'bar' })).toEqual([{ foo: 'bar' }])
+    expect(castArray('fooBar')).toEqual(['fooBar'])
+    expect(castArray(null)).toEqual([null])
+    expect(castArray(undefined)).toEqual([undefined])
+    expect(castArray()).toEqual([undefined])
+  })
+})
+
+describe('toArray', () => {
+  it('returns an empty array if given empty input', () => {
+    expect(toArray()).toEqual([])
+    expect(toArray(null)).toEqual([])
+    expect(toArray(false)).toEqual([])
+  })
+
+  it('returns an empty array if given a number', () => {
+    expect(toArray(1)).toEqual([])
+    expect(toArray(213)).toEqual([])
+  })
+
+  it('returns an array from the provided input', () => {
+    expect(toArray({ foo: 'bar', hello: 'world' })).toEqual(['bar', 'world'])
+    expect(toArray('foo')).toEqual(['f', 'o', 'o'])
   })
 })
