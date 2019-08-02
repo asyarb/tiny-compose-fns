@@ -71,6 +71,7 @@ export {
   isNumber,
   isPlainObject,
   isFunction,
+  isArray,
   first,
   last,
   tail,

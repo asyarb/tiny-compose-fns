@@ -291,6 +291,7 @@ describe('find', () => {
     expect(find(noop, null)).toBeUndefined()
     expect(find(noop, '')).toBeUndefined()
     expect(find(noop, 1)).toBeUndefined()
+    expect(find(noop, {})).toBeUndefined()
   })
 
   it('returns undefined if searched value is not in the collection', () => {

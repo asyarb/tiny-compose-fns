@@ -204,6 +204,22 @@ export const join = (sep, arr) => (isArray(arr) ? arr.join(sep) : '')
 export const first = arr => (isArray(arr) ? arr[0] : undefined)
 
 /**
+ * Returns the first non-null value in an array given an index searching
+ * downward. Returns undefined if no non-null value can be found.
+ *
+ * @param {*} idx
+ * @param {*} arr
+ */
+export const firstLeft = (i, arr) => {
+  arr = castArray(arr)
+  if (i >= arr.length) i = arr.length - 1
+
+  while (i > -1 && (arr[i] === null || arr[i] === undefined)) i--
+
+  return arr[i]
+}
+
+/**
  * Returns the last element of an array.
  *
  * @param {Array} arr - Array to extract the last element from.
@@ -261,7 +277,8 @@ export const compact = arr => (isArray(arr) ? arr.filter(Boolean) : [])
  * @param {Array} arr
  * @param {Array} vals
  */
-export const concat = (arr, vals) => (isArray(arr) ? arr.concat(vals) : [arr])
+export const concat = (arr, vals) =>
+  isArray(arr) ? [...arr, ...castArray(vals)] : [arr]
 
 /**
  * Returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
@@ -269,8 +286,7 @@ export const concat = (arr, vals) => (isArray(arr) ? arr.concat(vals) : [arr])
  * @param {function} fn
  * @param {Array} arr
  */
-export const find = (fn, arr) =>
-  isArray(arr) || isPlainObject(arr) ? arr.find(fn) : undefined
+export const find = (fn, arr) => (isArray(arr) ? arr.find(fn) : undefined)
 
 /**
  * Tests whether any of the elements in the array pass the test implemented by the provided function.
@@ -314,7 +330,18 @@ export const flatMap = (fn, arr) => (isArray(arr) ? arr.flatMap(fn) : [])
  *
  * @param {Array} arr
  */
-export const reverse = arr => (isArray(arr) ? arr.concat().reverse() : arr)
+export const reverse = arr => (isArray(arr) ? arr.map(i => i).reverse() : arr)
+
+/**
+ * Returns a copy of an array by removing or replacing exisiting elements or adding new elements in place.
+ *
+ * @param {number} start
+ * @param {number} deleteCount
+ * @param {*} item
+ * @param {Array} arr
+ */
+export const splice = (start, deleteCount, item, arr) =>
+  isArray(arr) ? arr.map(i => i).splice(start, deleteCount, item) : []
 
 /**
  * Copies portion of array into a new object based on provided parameters.
@@ -341,7 +368,7 @@ export const includes = (val, arr) => (isArray(arr) ? arr.includes(val) : false)
  * @param {Array} arr
  */
 
-export const sort = arr => (isArray(arr) ? arr.concat().sort() : [])
+export const sort = arr => (isArray(arr) ? arr.map(i => i).sort() : [])
 
 /**
  * Sorts an array based on an object key or custom comparator function.
@@ -352,7 +379,7 @@ const sortByWith = key => (a, b) =>
   a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0
 export const sortBy = (keyOrFn, arr) =>
   isArray(arr)
-    ? arr.concat().sort(isFunction(keyOrFn) ? keyOrFn : sortByWith(keyOrFn))
+    ? arr.map(i => i).sort(isFunction(keyOrFn) ? keyOrFn : sortByWith(keyOrFn))
     : []
 
 /**
@@ -368,7 +395,7 @@ export const uniq = arr => (isArray(arr) ? [...new Set(arr)] : [])
  * @param {Array} arr
  */
 export const shuffle = arr =>
-  isArray(arr) ? arr.concat().sort(() => Math.random() - 0.5) : []
+  isArray(arr) ? arr.map(i => i).sort(() => Math.random() - 0.5) : []
 
 /**
  * Returns the index of the provided value
@@ -416,6 +443,41 @@ export const sample = arr =>
   isArray(arr) && arr.length !== 0
     ? arr[Math.floor(Math.random() * arr.length)]
     : undefined
+
+/**
+ * Creates an array of grouped elements.
+ *
+ * @param {Array} arrA
+ * @param {Array} arrB
+ */
+export const zip = (arrA, arrB) =>
+  castArray(arrA).map((e, i) => [e, castArray(arrB)[i]])
+
+/**
+ * Creates an array of grouped elements based on the passed function.
+ *
+ * @param {function} fn
+ * @param {Array} a
+ * @param {Array} b
+ */
+export const zipWith = (fn, a, b) => {
+  const result = []
+  const length = Math.max(a.length, b.length)
+
+  for (let i = 0; i < length; i++)
+    result[i] = fn(firstLeft(i, a), firstLeft(i, b))
+
+  return result
+}
+
+/**
+ * Returns an array containing boolean values of whether a given set of arrays have strict equality pairs.
+ *
+ * @param {Array} a
+ * @param {Array} b
+ */
+export const pairsEq = (a, b) =>
+  zipWith((a, b) => a === b, castArray(a), castArray(b))
 
 // OBJECT FNS
 
