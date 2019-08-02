@@ -7,6 +7,7 @@ import {
   noop,
   values,
   merge,
+  propsEq,
 } from '../dist/noFp'
 
 // UTILS
@@ -205,5 +206,34 @@ describe('merge', () => {
     const obj3 = { foo: 'final' }
 
     expect(merge(obj1, obj2, obj3)).toEqual({ foo: 'final' })
+  })
+})
+
+describe('propsEq', () => {
+  it('returns false if inputs are falsey', () => {
+    expect(propsEq()).toBe(false)
+    expect(propsEq(null, null, null)).toBe(false)
+    expect(propsEq(false, false, false)).toBe(false)
+  })
+
+  it('returns false if the provided inputs are not plain objects', () => {
+    expect(propsEq('foo', [], 'bar')).toBe(false)
+    expect(propsEq('foo', 3, 'bar')).toBe(false)
+    expect(propsEq('foo', noop, 'bar')).toBe(false)
+  })
+
+  it('returns false if the provided key is not a string', () => {
+    expect(propsEq({}, obj, obj)).toBe(false)
+    expect(propsEq(noop, obj, obj)).toBe(false)
+    expect(propsEq([], obj, obj)).toBe(false)
+    expect(propsEq('foo', obj, obj)).not.toBe(false)
+  })
+
+  it('returns true if the properties at the provided key are the same', () => {
+    expect(propsEq('foo', obj, obj)).toBe(true)
+  })
+
+  it('returns true if nested properties are the same', () => {
+    expect(propsEq('hello.world.is', obj, obj)).toBe(true)
   })
 })

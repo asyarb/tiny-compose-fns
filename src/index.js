@@ -25,6 +25,12 @@ import {
   split as splitB,
   chunk as chunkB,
   times as timesB,
+  splice as spliceB,
+  zip as zipB,
+  zipWith as zipWithB,
+  pairsEq as pairsEqB,
+  propsEq as propsEqB,
+  firstLeft as firstLeftB,
 } from './base'
 
 /**
@@ -61,6 +67,12 @@ export const replace = curry(replaceB)
 export const split = curry(splitB)
 export const chunk = curry(chunkB)
 export const times = curry(timesB)
+export const splice = curry(spliceB)
+export const zip = curry(zipB)
+export const zipWith = curry(zipWithB)
+export const pairsEq = curry(pairsEqB)
+export const propsEq = curry(propsEqB)
+export const firstLeft = curry(firstLeftB)
 
 export {
   noop,

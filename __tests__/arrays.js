@@ -31,6 +31,10 @@ import {
   sample,
   toArray,
   castArray,
+  splice,
+  zip,
+  zipWith,
+  pairsEq,
 } from '../dist/noFp'
 
 const arr = [1, 2, 3]
@@ -766,7 +770,7 @@ describe('castArray', () => {
     expect(castArray('fooBar')).toEqual(['fooBar'])
     expect(castArray(null)).toEqual([null])
     expect(castArray(undefined)).toEqual([undefined])
-    expect(castArray()).toEqual([undefined])
+    expect(castArray()).toEqual([])
   })
 })
 
@@ -786,4 +790,120 @@ describe('toArray', () => {
     expect(toArray({ foo: 'bar', hello: 'world' })).toEqual(['bar', 'world'])
     expect(toArray('foo')).toEqual(['f', 'o', 'o'])
   })
+})
+
+describe('splice', () => {
+  it('returns an empty array if given falsey inputs', () => {
+    expect(splice()).toEqual([])
+    expect(splice(null, null, null, null)).toEqual([])
+    expect(splice(false, false, false, false)).toEqual([])
+  })
+
+  it('splices to the front of the array if given an invalid start index parameter', () => {
+    expect(splice(undefined, 0, 4, arr)).toEqual([4, 1, 2, 3])
+    expect(splice('foo', 0, 4, arr)).toEqual([4, 1, 2, 3])
+    expect(splice({}, 0, 4, arr)).toEqual([4, 1, 2, 3])
+    expect(splice(noop, 0, 4, arr)).toEqual([4, 1, 2, 3])
+  })
+
+  it('splices to the specified start index', () => {
+    expect(splice(1, 0, 4, arr)).toEqual([1, 4, 2, 3])
+    expect(splice(2, 0, 4, arr)).toEqual([1, 2, 4, 3])
+  })
+
+  it('splices the array and replaces values based on the deleteCount parameter', () => {
+    expect(splice(1, 1, 4, arr)).toEqual([1, 4, 3])
+    expect(splice(1, 2, 4, arr)).toEqual([1, 4])
+  })
+
+  it('immutably splices arrays', () => {
+    splice(1, 0, 4, arr)
+
+    expect(arr).toEqual([1, 2, 3])
+  })
+})
+
+describe('zip', () => {
+  it('zips falsey inputs into an array', () => {
+    expect(zip()).toEqual([[undefined, undefined]])
+    expect(zip(null, null)).toEqual([[null, null]])
+    expect(zip(false, false)).toEqual([[false, false]])
+  })
+
+  it('zips other values into grouped elements', () => {
+    expect(zip('foo', 'bar')).toEqual([['foo', 'bar']])
+    expect(zip(1, {})).toEqual([[1, {}]])
+  })
+
+  it('zips two arrays into grouped elements', () => {
+    const arr2 = [4, 5, 6]
+
+    expect(zip(arr, arr2)).toEqual([[1, 4], [2, 5], [3, 6]])
+  })
+
+  it('zips two arrays with differing elements', () => {
+    const arr2 = [4, 5, 6, 7]
+
+    expect(zip(arr, arr2)).toEqual([[1, 4], [2, 5], [3, 6], [undefined, 7]])
+  })
+})
+
+describe('zipWith', () => {
+  it('returns an empty array if iteratee is not a function.', () => {
+    expect(zipWith()).toEqual([])
+    expect(zipWith(null, arr, arr)).toEqual([])
+    expect(zipWith(false, arr, arr)).toEqual([])
+    expect(zipWith({}, arr, arr)).toEqual([])
+    expect(zipWith([], arr, arr)).toEqual([])
+  })
+
+  it('zips falsey inputs based on the provided iteratee', () => {
+    expect(zipWith(noop)).toEqual([undefined])
+    expect(zipWith((a, b) => [a, b], null, null)).toEqual([[null, null]])
+  })
+
+  it('zips inputs based on the provided iteratee', () => {
+    expect(zipWith((a, b) => a + b, arr, arr)).toEqual([2, 4, 6])
+    expect(zipWith((a, b) => a === b, arr, arr)).toEqual([true, true, true])
+  })
+
+  it('zips inputs with differing lengths to the max value', () => {
+    const arr2 = [1, 2, 3, 4]
+
+    expect(zipWith((a, b) => a === b, arr, arr2)).toEqual([
+      true,
+      true,
+      true,
+      false,
+    ])
+  })
+})
+
+describe.only('pairsEq', () => {
+  /* it('returns true in an array if given identical falsey inputs', () => {
+    expect(pairsEq()).toEqual([true])
+    expect(pairsEq(null, null)).toEqual([true])
+    expect(pairsEq(true, true)).toEqual([true])
+    expect(pairsEq(false, false)).toEqual([true])
+  })
+
+  it('returns false if given different falsey inputs', () => {
+    expect(pairsEq(null)).toEqual([false])
+    expect(pairsEq(null, undefined)).toEqual([false])
+    expect(pairsEq(undefined, null)).toEqual([false])
+    expect(pairsEq(true, false)).toEqual([false])
+  }) */
+
+  it('returns true if given empty arrays', () => {
+    expect(pairsEq([], [])).toEqual([true])
+  })
+
+  it('returns false if given empty objects', () => {
+    expect(pairsEq({}, {})).toEqual([false])
+  })
+
+  /* it('returns true if given identical non-paired inputs', () => {
+    expect(pairsEq('foo', 'foo')).toEqual([true])
+    expect(pairsEq(1, 1)).toEqual([true])
+  }) */
 })
