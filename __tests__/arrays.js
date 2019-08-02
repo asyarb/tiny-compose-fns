@@ -879,8 +879,8 @@ describe('zipWith', () => {
   })
 })
 
-describe.only('pairsEq', () => {
-  /* it('returns true in an array if given identical falsey inputs', () => {
+describe('pairsEq', () => {
+  it('returns true in an array if given identical falsey inputs', () => {
     expect(pairsEq()).toEqual([true])
     expect(pairsEq(null, null)).toEqual([true])
     expect(pairsEq(true, true)).toEqual([true])
@@ -892,7 +892,7 @@ describe.only('pairsEq', () => {
     expect(pairsEq(null, undefined)).toEqual([false])
     expect(pairsEq(undefined, null)).toEqual([false])
     expect(pairsEq(true, false)).toEqual([false])
-  }) */
+  })
 
   it('returns true if given empty arrays', () => {
     expect(pairsEq([], [])).toEqual([true])
@@ -902,8 +902,8 @@ describe.only('pairsEq', () => {
     expect(pairsEq({}, {})).toEqual([false])
   })
 
-  /* it('returns true if given identical non-paired inputs', () => {
+  it('returns true if given identical non-paired inputs', () => {
     expect(pairsEq('foo', 'foo')).toEqual([true])
     expect(pairsEq(1, 1)).toEqual([true])
-  }) */
+  })
 })

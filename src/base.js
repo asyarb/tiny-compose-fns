@@ -208,22 +208,6 @@ export const join = (sep, arr) => (Array.isArray(arr) ? arr.join(sep) : '')
 export const first = arr => (Array.isArray(arr) ? arr[0] : undefined)
 
 /**
- * Returns the first non-null value in an array given an index searching
- * downward. Returns undefined if no non-null value can be found.
- *
- * @param {number} i
- * @param {Array} arr
- */
-export const firstLeft = (idx, arr) => {
-  arr = castArray(arr)
-  if (idx >= arr.length) idx = arr.length - 1
-
-  while (idx > -1 && (arr[idx] === null || arr[idx] === undefined)) idx--
-
-  return arr[idx]
-}
-
-/**
  * Returns the last element of an array.
  *
  * @param {Array} arr - Array to extract the last element from.
