@@ -567,6 +567,15 @@ export const mergeDeep = (target, source) => {
   return output
 }
 
+/**
+ * Returns true if the properties of two objects are equal, false otherwise.
+ * 
+ * @param {string} key 
+ * @param {Object} a 
+ * @param {Object} b 
+ */
+export const propsEq = (key, a, b) => a[key] === b[key]
+
 // COLLECTION
 
 /**
