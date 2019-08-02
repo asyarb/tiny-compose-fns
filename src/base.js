@@ -29,7 +29,7 @@ export const noop = () => undefined
 /**
  * Invokes the provided function num times, returning an array of the results of each invocation. Function is provided the index as an argument.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {number} num
  */
 export const times = (fn, num) => {
@@ -159,7 +159,7 @@ export const toArray = val =>
 /**
  * Returns a new array based on the result of the passed function.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {Array} arr
  *
  * @returns a new array with modified values based on the iteratee.
@@ -170,7 +170,7 @@ export const map = (fn, arr) =>
 /**
  * Returns a new array composed of values that return true from the passed function.
  *
- * @param {function} fn - iteratee to run on every element
+ * @param {Function} fn - iteratee to run on every element
  * @param {Array} arr
  *
  * @return new array with filtered values based on the iteratee
@@ -181,7 +181,7 @@ export const filter = (fn, arr) =>
 /**
  * Runs a function for every element in the passed array.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {Array} arr
  *
  */
@@ -283,7 +283,7 @@ export const concat = (arr, vals) =>
 /**
  * Returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {Array} arr
  */
 export const find = (fn, arr) => (isArray(arr) ? arr.find(fn) : undefined)
@@ -291,7 +291,7 @@ export const find = (fn, arr) => (isArray(arr) ? arr.find(fn) : undefined)
 /**
  * Tests whether any of the elements in the array pass the test implemented by the provided function.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {Array} arr
  */
 export const some = (fn, arr) => (isArray(arr) ? arr.some(fn) : false)
@@ -456,7 +456,7 @@ export const zip = (arrA, arrB) =>
 /**
  * Creates an array of grouped elements based on the passed function.
  *
- * @param {function} fn
+ * @param {Function} fn
  * @param {Array} a
  * @param {Array} b
  */
@@ -569,10 +569,10 @@ export const mergeDeep = (target, source) => {
 
 /**
  * Returns true if the properties of two objects are equal, false otherwise.
- * 
- * @param {string} key 
- * @param {Object} a 
- * @param {Object} b 
+ *
+ * @param {string} key
+ * @param {Object} a
+ * @param {Object} b
  */
 export const propsEq = (key, a, b) => a[key] === b[key]
 
