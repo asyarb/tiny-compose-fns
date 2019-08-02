@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.9.0...v0.10.0) (2019-08-02)
+
+
+### Features
+
+* propsEq ([56c6c79](https://github.com/asyarb/tiny-compose-fns/commit/56c6c79))
+* remove firstLeft ([63cbfa7](https://github.com/asyarb/tiny-compose-fns/commit/63cbfa7))
+* splice, isArray export, zip, zipWith, pairsEq ([60c312a](https://github.com/asyarb/tiny-compose-fns/commit/60c312a))
+* tests for new functions ([46b833b](https://github.com/asyarb/tiny-compose-fns/commit/46b833b))
+
+
+
 ## [0.9.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.8.0...v0.9.0) (2019-07-31)
 
 
