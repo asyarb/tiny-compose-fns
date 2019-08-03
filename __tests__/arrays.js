@@ -1,5 +1,6 @@
 import {
   noop,
+  reduce,
   map,
   filter,
   forEach,
@@ -43,6 +44,28 @@ const users = [
   { user: 'fred', age: 40, active: false },
   { user: 'pebbles', age: 1, active: true },
 ]
+
+describe('reduce', () => {
+  it('throws error if provided a bad function', () => {
+    expect(() => reduce()).toThrow()
+    expect(() => reduce(undefined, [])).toThrow()
+
+    expect(() => reduce(null, [])).toThrow()
+    expect(() => reduce(1, [])).toThrow()
+    expect(() => reduce('foo', [])).toThrow()
+  })
+
+  it('returns the initial value with if given an invalid array', () => {
+    expect(reduce(noop, {})).toEqual({})
+    expect(reduce(noop, [], 'foo')).toEqual([])
+    expect(reduce(noop, 'foo', null)).toBe('foo')
+    expect(reduce(noop, 1, noop)).toBe(1)
+  })
+
+  it('reduces a value based on the provided iteratee', () => {
+    expect(reduce((sum, n) => sum + n, 0, [1, 2])).toBe(3)
+  })
+})
 
 describe('map', () => {
   it('throws error if provided a bad function', () => {

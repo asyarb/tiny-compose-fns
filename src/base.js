@@ -161,6 +161,19 @@ export const toArray = val =>
     : []
 
 /**
+ * Reduces array to a value which is the accumulated result of running each element in collection through the provided function. Each invocation of the function is provided the return value of the previous iterations.
+ *
+ * @param {Function} fn
+ * @param {Array} arr
+ */
+export const reduce = (fn, initialValue, arr) =>
+  !isFunction(fn)
+    ? [].reduce(fn)
+    : Array.isArray(arr)
+    ? arr.reduce(fn)
+    : initialValue
+
+/**
  * Returns a new array based on the result of the passed function.
  *
  * @param {Function} fn
