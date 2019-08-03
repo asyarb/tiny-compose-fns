@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.10.0...v0.11.0) (2019-08-03)
+
+
+### Features
+
+* export curried reduce ([f2bb6ae](https://github.com/asyarb/tiny-compose-fns/commit/f2bb6ae))
+* reduce ([03f0c63](https://github.com/asyarb/tiny-compose-fns/commit/03f0c63))
+
+
+
 ## [0.10.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.9.0...v0.10.0) (2019-08-02)
 
 
