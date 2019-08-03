@@ -30,6 +30,7 @@ import {
   zipWith as zipWithB,
   pairsEq as pairsEqB,
   propsEq as propsEqB,
+  reduce as reduceB,
 } from './base'
 
 /**
@@ -71,6 +72,7 @@ export const zip = curry(zipB)
 export const zipWith = curry(zipWithB)
 export const pairsEq = curry(pairsEqB)
 export const propsEq = curry(propsEqB)
+export const reduce = curry(reduceB)
 
 export {
   noop,
