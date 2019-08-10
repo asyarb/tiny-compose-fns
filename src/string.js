@@ -5,10 +5,9 @@ import { isString } from './utils'
  *
  * @param {string} val - starting value to check for in string.
  * @param {string} str - string to check.
- * @param {number} start - start index to check from.
  */
-export const startsWith = (val, str, start = 0) =>
-  isString(str) ? str.startsWith(val, start) : false
+export const startsWith = (val, str) =>
+  isString(str) ? str.startsWith(val, 0) : false
 
 /**
  *

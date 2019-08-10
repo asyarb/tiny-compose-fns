@@ -29,12 +29,6 @@ describe('startsWith', () => {
     expect(startsWith('Bar', str)).toBe(false)
     expect(startsWith(1, '123')).toBe(true)
   })
-
-  it('can search from a specified index', () => {
-    expect(startsWith('Bar', str, 3)).toBe(true)
-    expect(startsWith('foo', str, 3)).toBe(false)
-    expect(startsWith(2, '123', 1)).toBe(true)
-  })
 })
 
 describe('replace', () => {

@@ -44,12 +44,12 @@ export const toArray = val =>
  * @param {Function} fn
  * @param {Array} arr
  */
-export const reduce = (fn, initialValue, arr) =>
+export const reduce = (fn, accumulator, arr) =>
   !isFunction(fn)
     ? [].reduce(fn)
     : Array.isArray(arr)
-    ? arr.reduce(fn)
-    : initialValue
+    ? arr.reduce(fn, accumulator)
+    : accumulator
 
 /**
  * Returns a new array based on the result of the passed function.
@@ -255,7 +255,6 @@ export const includes = (val, arr) =>
  *
  * @param {Array} arr
  */
-
 export const sort = arr => (Array.isArray(arr) ? arr.map(i => i).sort() : [])
 
 /**

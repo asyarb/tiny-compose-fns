@@ -1,197 +1,178 @@
-export function allProm(r: any): void
+export function allProm(promises: Promise[]): any[]
 
-export function camelCase(r: any): any
+export function camelCase(string: string): string
 
-export function castArray(r: any, ...args: any[]): any
+export function castArray(value: any): [any]
 
-export function chunk(...args: any[]): any
+export function chunk(size: number, array: any[]): any[]
 
-export function compact(r: any): void
+export function compact(array: any[]): any[]
 
-export function compose(r: any): any
+export function compose(data: any): any
 
-export function concat(...args: any[]): any
+export function concat(array: any[], values: any[]): any[]
 
-export function entries(r: any): void
+export function entries(object: object): any[]
 
-export function filter(...args: any[]): any
+export function filter(
+  callback: (currentElement: any, index: number, array: any[]) => any,
+  array: any[]
+): any[]
 
-export function find(...args: any[]): any
+export function find(
+  callback: (currElement: any, index: number, array: any[]) => boolean,
+  array: any[]
+): any
 
-export function first(r: any): void
+export function first(array: any[]): any
 
-export function flat(r: any): void
+export function flat(array: any[]): any[]
 
-export function flatDeep(r: any): void
+export function flatDeep(array: any[]): any[]
 
-export function flatDepth(...args: any[]): any
+export function flatDepth(depth: number, array: any[]): any[]
 
-export function flatMap(...args: any[]): any
+export function flatMap(
+  callback: (currentElement: any, index: number, array: any[]) => any,
+  array: any[]
+): any[]
 
-export function forEach(...args: any[]): any
+export function forEach(
+  callback: (currentElement: any, index: number, array: any[]) => void,
+  array: any[]
+): void
 
-export function fromEntries(r: any): void
+export function fromEntries(entries: any[]): object
 
-export function get(...args: any[]): any
+export function get(path: string, object: object, fallback: any): any
 
-export function has(...args: any[]): any
+export function has(path: string, object: object): boolean
 
-export function includes(...args: any[]): any
+export function includes(value: any, array: any[]): boolean
 
-export function indexOf(...args: any[]): any
+export function indexOf(value: any, array: any[]): number
 
-export function isArray(r: any): void
+export function isArray(value: any): boolean
 
-export function isEmpty(r: any): void
+export function isEmpty(value: any): boolean
 
-export function isFunction(r: any): void
+export function isFunction(value: any): boolean
 
-export function isNull(r: any): void
+export function isNull(value: any): boolean
 
-export function isNumber(r: any): void
+export function isNumber(value: any): boolean
 
-export function isPlainObject(r: any): void
+export function isPlainObject(value: any): boolean
 
-export function isString(r: any): void
+export function isString(value: any): boolean
 
-export function isUndefined(r: any): void
+export function isUndefined(value: any): boolean
 
-export function join(...args: any[]): any
+export function join(separator: string, array: string[] | number[]): string
 
-export function keys(r: any): void
+export function keys(object: object): any[]
 
-export function last(r: any): void
+export function last(array: any[]): any
 
-export function lastIndexOf(...args: any[]): any
+export function lastIndexOf(value: any, array: any[]): number
 
-export function lowercase(r: any): void
+export function lowercase(string: string): string
 
-export function map(...args: any[]): any
+export function map(
+  callback: (currentValue: any, index: number, array: any[]) => any,
+  data: any[]
+): any[]
 
-export function max(r: any): void
+export function max(numbers: number[]): number | undefined
 
-export function merge(...args: any[]): any
+export function merge(target: object, ...sources: object[]): object
 
-export function mergeDeep(...args: any[]): any
+export function mergeDeep(target: object, source: object): object
 
-export function min(r: any): void
+export function min(numbers: number[]): number | undefined
 
-export function noop(): void
+export function noop(): undefined
 
-export function pairsEq(...args: any[]): any
+export function pairsEq(pairs: any[], pairsTwo: any[]): boolean[]
 
-export function propsEq(...args: any[]): any
+export function propsEq(
+  key: string,
+  object: object,
+  objectTwo: object
+): boolean[]
 
-export function reduce(...args: any[]): any
+export function reduce(
+  callback: (
+    accumulator: any,
+    currentValue: any,
+    index: number,
+    array: any[]
+  ) => any,
+  initialValue: any,
+  data: any[]
+): any
 
-export function replace(...args: any[]): any
+export function replace(
+  pattern: RegExp | string,
+  replacement: string,
+  source: string
+): string
 
-export function resolve(r: any): void
+export function resolve(promise: Promise): any
 
-export function reverse(r: any): void
+export function reverse(array: any[]): any[]
 
-export function sample(r: any): void
+export function sample(array: any[]): any
 
-export function shuffle(r: any): void
+export function shuffle(array: any[]): any[]
 
-export function size(r: any): void
+export function size(object: any[] | object | Map | Set): number
 
-export function slice(...args: any[]): any
+export function slice(start: number, end: number, array: any[]): any[]
 
-export function some(...args: any[]): any
+export function some(callback: (element: any) => boolean): boolean
 
-export function sort(r: any): void
+export function sort(array: any[]): any[]
 
-export function sortBy(...args: any[]): any
+export function sortBy(keyOrFunction: any, array: any[]): any[]
 
-export function splice(...args: any[]): any
+export function splice(
+  start: number,
+  deleteCount: number,
+  item: any,
+  array: any[]
+): any[]
 
-export function split(...args: any[]): any
+export function split(delimiter: string, sourceStr: string): string
 
-export function startCase(r: any): void
+export function startCase(source: string): string
 
-export function startsWith(...args: any[]): any
+export function startsWith(startStr: string, checkStr: string): boolean
 
-export function tail(r: any): any
+export function tail(array: any[]): any
 
-export function take(...args: any[]): any
+export function take(amount: number, array: any[]): any[]
 
-export function times(...args: any[]): any
+export function times(callback: (index: number) => any, numTimes: number): any[]
 
-export function toArray(r: any): void
+export function toArray(value: any): any[]
 
-export function trim(r: any): void
+export function trim(string: string): string
 
-export function uniq(r: any): void
+export function uniq(array: any[]): any[]
 
-export function uniqueId(e: any): void
+export function uniqueId(prefix: string): number
 
-export function upperFirst(r: any): void
+export function upperFirst(string: string): string
 
-export function uppercase(r: any): void
+export function uppercase(string: string): string
 
-export function values(r: any): void
+export function values(object: object): any[]
 
-export function zip(...args: any[]): any
+export function zip(arrOne: any[], arrTwo: any[]): any[]
 
-export function zipWith(...args: any[]): any
-
-export function chunk(...args: any[]): any
-
-export function concat(...args: any[]): any
-
-export function filter(...args: any[]): any
-
-export function find(...args: any[]): any
-
-export function flatDepth(...args: any[]): any
-
-export function flatMap(...args: any[]): any
-
-export function forEach(...args: any[]): any
-
-export function get(...args: any[]): any
-
-export function has(...args: any[]): any
-
-export function includes(...args: any[]): any
-
-export function indexOf(...args: any[]): any
-
-export function join(...args: any[]): any
-
-export function lastIndexOf(...args: any[]): any
-
-export function map(...args: any[]): any
-
-export function merge(...args: any[]): any
-
-export function mergeDeep(...args: any[]): any
-
-export function pairsEq(...args: any[]): any
-
-export function propsEq(...args: any[]): any
-
-export function reduce(...args: any[]): any
-
-export function replace(...args: any[]): any
-
-export function slice(...args: any[]): any
-
-export function some(...args: any[]): any
-
-export function sortBy(...args: any[]): any
-
-export function splice(...args: any[]): any
-
-export function split(...args: any[]): any
-
-export function startsWith(...args: any[]): any
-
-export function take(...args: any[]): any
-
-export function times(...args: any[]): any
-
-export function zip(...args: any[]): any
-
-export function zipWith(...args: any[]): any
+export function zipWith(
+  callback: (arrOneCurr: any, arrTwoCurr: any) => any,
+  arrOne: any[],
+  arrTwo: any[]
+): any[]
