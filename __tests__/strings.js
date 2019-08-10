@@ -157,7 +157,6 @@ describe('lowercase', () => {
 
   it('lowercases a string', () => {
     expect(lowercase('FOO')).toBe('foo')
-    expect(lowercase('WeIrD cASe')).toBe('weird case')
   })
 })
 
@@ -180,7 +179,6 @@ describe('uppercase', () => {
 
   it('uppercases a string', () => {
     expect(uppercase('foo')).toBe('FOO')
-    expect(uppercase('WeIrD cASe')).toBe('WEIRD CASE')
   })
 })
 
@@ -203,7 +201,6 @@ describe('upperFirst', () => {
 
   it('upperFirsts a string', () => {
     expect(upperFirst('foo')).toBe('Foo')
-    expect(upperFirst('weIrD cASe')).toBe('WeIrD cASe')
   })
 })
 
@@ -226,7 +223,6 @@ describe('camelCase', () => {
 
   it('camelCases a string', () => {
     expect(camelCase('FOO BAR')).toBe('fooBar')
-    expect(camelCase('WeIrD cASe')).toBe('weirdCase')
   })
 })
 
@@ -249,7 +245,6 @@ describe('kebabCase', () => {
 
   it('kebabCases a string', () => {
     expect(kebabCase('FOO BAR')).toBe('foo-bar')
-    expect(kebabCase('WeIrD cASe')).toBe('weird-case')
   })
 })
 
