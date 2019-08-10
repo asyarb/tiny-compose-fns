@@ -1,5 +1,7 @@
 # Tiny Functions <!-- omit in toc -->
 
+[![CircleCI](https://circleci.com/gh/asyarb/tiny-compose-fns.svg?style=svg)](https://circleci.com/gh/asyarb/tiny-compose-fns)
+
 - [Installation](#installation)
 - [Usage](#usage)
   - [Why wouldn't I just use `ramda` or `lodash`/`lodash/fp`?](#why-wouldnt-i-just-use-ramda-or-lodashlodashfp)

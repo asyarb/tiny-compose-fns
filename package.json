@@ -5,6 +5,7 @@
   "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/mjs/index.js",
+  "types": "./tiny-compose-fns.d.ts",
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
     "format": "prettier --write 'src/**/*.js' 'rollup.config.js' 'README.md'",
