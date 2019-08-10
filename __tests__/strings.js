@@ -9,7 +9,8 @@ import {
   upperFirst,
   trim,
   startCase,
-} from '../dist/noFp'
+  kebabCase,
+} from '../noFp'
 
 describe('startsWith', () => {
   const str = 'fooBarBaz'
@@ -226,6 +227,29 @@ describe('camelCase', () => {
   it('camelCases a string', () => {
     expect(camelCase('FOO BAR')).toBe('fooBar')
     expect(camelCase('WeIrD cASe')).toBe('weirdCase')
+  })
+})
+
+describe('kebabCase', () => {
+  it('returns an empty string on undefined or null', () => {
+    expect(kebabCase()).toBe('')
+    expect(kebabCase(null)).toBe('')
+  })
+
+  it('returns an empty string if not given a string', () => {
+    expect(kebabCase(123)).toBe('')
+    expect(kebabCase([])).toBe('')
+    expect(kebabCase({})).toBe('')
+    expect(kebabCase(noop)).toBe('')
+  })
+
+  it('returns an empty string if given an empty string', () => {
+    expect(kebabCase('')).toBe('')
+  })
+
+  it('kebabCases a string', () => {
+    expect(kebabCase('FOO BAR')).toBe('foo-bar')
+    expect(kebabCase('WeIrD cASe')).toBe('weird-case')
   })
 })
 

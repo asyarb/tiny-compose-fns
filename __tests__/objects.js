@@ -8,7 +8,7 @@ import {
   values,
   merge,
   propsEq,
-} from '../dist/noFp'
+} from '../noFp'
 
 // UTILS
 

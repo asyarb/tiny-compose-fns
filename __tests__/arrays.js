@@ -36,7 +36,7 @@ import {
   zip,
   zipWith,
   pairsEq,
-} from '../dist/noFp'
+} from '../noFp'
 
 const arr = [1, 2, 3]
 const users = [

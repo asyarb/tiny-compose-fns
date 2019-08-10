@@ -113,4 +113,5 @@ export {
   uniqueId,
   toArray,
   castArray,
+  kebabCase,
 } from './base'
