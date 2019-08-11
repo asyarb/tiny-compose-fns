@@ -33,9 +33,6 @@ import {
   reduce as reduceB,
 } from './base'
 
-/**
- * Call a sequence of curried functions.
- */
 export const compose = (...c) => (...a) => {
   let i = c.length - 1
   a = c[i](...a)

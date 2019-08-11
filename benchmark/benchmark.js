@@ -23,7 +23,7 @@ const {
 } = require('../dist/index.js')
 
 // Testing Setup
-const arr = [1, 2, 3, 1, 2, 3, undefined, null, 'foo bar baz', 'hello world']
+const arr = [1, 2, 3, undefined, null, 'foo bar baz', 'hello world']
 const suite = new Benchmark.Suite()
 
 suite.add('tinyFns/noFp', () =>
@@ -39,8 +39,8 @@ suite.add('tinyFns', () => {
 })
 suite.add('lodash/fp', () => {
   _.compose(
-    _.map(camelCase),
-    _.filter(isString),
+    _.map(_.camelCase),
+    _.filter(_.isString),
     _.uniq,
     _.compact
   )(arr)
