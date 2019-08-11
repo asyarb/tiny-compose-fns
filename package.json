@@ -1,6 +1,6 @@
 {
   "name": "tiny-compose-fns",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Tiny composeable helper functions.",
   "sideEffects": false,
   "main": "dist/index.js",

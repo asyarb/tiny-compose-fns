@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.11.0...v0.12.0) (2019-08-11)
+
+
+### Features
+
+* add circle ci ([2fa047e](https://github.com/asyarb/tiny-compose-fns/commit/2fa047e))
+* refactor code structure and kebabCase ([eb4bcf3](https://github.com/asyarb/tiny-compose-fns/commit/eb4bcf3))
+* typescript definition file ([dd41053](https://github.com/asyarb/tiny-compose-fns/commit/dd41053))
+* typescript defs ([b61907e](https://github.com/asyarb/tiny-compose-fns/commit/b61907e))
+
+
+### Tests
+
+* fix error in test ([15f3413](https://github.com/asyarb/tiny-compose-fns/commit/15f3413))
+
+
+
 ## [0.11.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.10.0...v0.11.0) (2019-08-03)
 
 
