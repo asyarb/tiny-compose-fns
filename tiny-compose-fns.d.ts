@@ -5,14 +5,14 @@
  *
  * @returns A single Promise that resolves when all Promises have resolved or rejects with the reason of the first Promise that rejects.
  */
-export function allProm(promises: Promise<any>[]): any[]
+export function allProm<T>(promises: Promise<T>[]): T[]
 
 /**
  * Camelcases the provided string.
  *
  * @param string - The string to camelCase.
  */
-export function camelCase(string: string): string
+export function camelCase(string?: string): string
 
 /**
  * Casts the provided value as an array if it's not one.
@@ -21,7 +21,7 @@ export function camelCase(string: string): string
  *
  * @returns The cast array.
  */
-export function castArray(value: any): [any]
+export function castArray<T>(value?: T): T[]
 
 /**
  * Creates an array of elements split into groups of the provided size.
@@ -31,7 +31,7 @@ export function castArray(value: any): [any]
  *
  * @returns An array containing chunked arrays. If array cannot be split evenly, the final chunk will be the remaining elements.
  */
-export function chunk(size: number, array: any[]): any[]
+export function chunk<T>(size?: number, array?: T[]): T[][]
 
 /**
  * Creates an array with all falsey values removed.
@@ -40,7 +40,7 @@ export function chunk(size: number, array: any[]): any[]
  *
  * @returns The new array of filtered values.
  */
-export function compact(array: any[]): any[]
+export function compact<T>(array?: T[]): T[]
 
 /**
  * Performs right-to-left function composition. Composed function must be unary. The rightmost function can have any arity.
@@ -49,7 +49,7 @@ export function compact(array: any[]): any[]
  *
  * @returns A composed function that performs the right-to-left operations specified.
  */
-export function compose(...functions: any): (data: any) => any
+export function compose(...functions: any): (data?: any) => any
 
 /**
  * Creates a new array concatenating the provided array with any additional arrays and/or values.
@@ -57,7 +57,7 @@ export function compose(...functions: any): (data: any) => any
  * @param array - The array to concatenate.
  * @param values - The values to concatenate.
  */
-export function concat(array: any[], values: any[]): any[]
+export function concat<T1, T2>(array?: T1[], values?: T2[]): T1 | T2[]
 
 /**
  * Creates an array of enumerable string key-value pairs from the provided object.
@@ -66,7 +66,7 @@ export function concat(array: any[], values: any[]): any[]
  *
  * @reutnrs The array of key-value pairs.
  */
-export function entries(object: object): any[]
+export function entries<T>(object?: object): T[]
 
 /**
  * Creates a new array by including values that return true based on the provided callback.
@@ -76,10 +76,10 @@ export function entries(object: object): any[]
  *
  * @returns The new filtered array.
  */
-export function filter(
-  callback: (currentElement: any, index: number, array: any[]) => any,
-  array: any[]
-): any[]
+export function filter<T1, T2>(
+  callback?: (currentElement?: T1, index?: number, array?: T1[]) => T2,
+  array?: T1[]
+): T2[]
 
 /**
  * Finds the value of the first element in an array that satisfies the provided function.
@@ -89,10 +89,10 @@ export function filter(
  *
  * @returns The value or undefined if not found.
  */
-export function find(
-  callback: (currElement: any, index: number, array: any[]) => boolean,
-  array: any[]
-): any
+export function find<T>(
+  callback?: (currElement?: T, index?: number, array?: T[]) => boolean,
+  array?: T[]
+): T
 
 /**
  * Gets the first element of an array.
@@ -101,7 +101,7 @@ export function find(
  *
  * @returns The first element of an array.
  */
-export function first(array: any[]): any
+export function first<T>(array?: T[]): T
 
 /**
  * Creates a new array that is flattened a single level deep.
@@ -110,7 +110,7 @@ export function first(array: any[]): any
  *
  * @returns A new array flattened by a single level.
  */
-export function flat(array: any[]): any[]
+export function flat<T>(array?: T[]): T[]
 
 /**
  * Creates a new array that is flattened recursively until it is one level deep.
@@ -119,7 +119,7 @@ export function flat(array: any[]): any[]
  *
  * @returns A new array flattened to a single level.
  */
-export function flatDeep(array: any[]): any[]
+export function flatDeep<T>(array?: T[]): T[]
 
 /**
  * Creates a new array that is flattened recursively by a specified depth.
@@ -129,7 +129,7 @@ export function flatDeep(array: any[]): any[]
  *
  * @returns A new array flattened by the specified amount.
  */
-export function flatDepth(depth: number, array: any[]): any[]
+export function flatDepth<T>(depth?: number, array?: T[]): T[]
 
 /**
  * Creates a new array by running map() over it, then flattenining the result into a new array. Is more efficient than running map() then flat() separately.
@@ -139,10 +139,10 @@ export function flatDepth(depth: number, array: any[]): any[]
  *
  * @return A new array containing the mapped and flattened values.
  */
-export function flatMap(
-  callback: (currentElement: any, index: number, array: any[]) => any,
-  array: any[]
-): any[]
+export function flatMap<T1, T2>(
+  callback?: (currentElement?: T1, index?: number, array?: T1[]) => T2,
+  array?: T1[]
+): T2[]
 
 /**
  * Execute a provided function once for each array element.
@@ -152,9 +152,9 @@ export function flatMap(
  *
  * @returns undefined.
  */
-export function forEach(
-  callback: (currentElement: any, index: number, array: any[]) => void,
-  array: any[]
+export function forEach<T>(
+  callback?: (currentElement?: T, index?: number, array?: T[]) => void,
+  array?: T[]
 ): void
 
 /**
@@ -164,7 +164,7 @@ export function forEach(
  *
  * @returns A new object whose properties are given by the entries of the array.
  */
-export function fromEntries(entries: any[]): object
+export function fromEntries<T>(entries?: T[]): object
 
 /**
  * Safely gets the value at the specified path from an object.
@@ -175,7 +175,11 @@ export function fromEntries(entries: any[]): object
  *
  * @returns The resolved value.
  */
-export function get(path: string, object: object, fallback: any): any
+export function get<T1, T2>(
+  path?: string,
+  object?: object,
+  fallback?: T1
+): T2 | T2 | undefined
 
 /**
  * Checks if path is a property of the provided object.
@@ -185,7 +189,7 @@ export function get(path: string, object: object, fallback: any): any
  *
  * @returns true if path exists, false otherwise.
  */
-export function has(path: string, object: object): boolean
+export function has(path?: string, object?: object): boolean
 
 /**
  * Determines whether an array includes a certain value among its values.
@@ -195,7 +199,7 @@ export function has(path: string, object: object): boolean
  *
  * @returns true if value is in array, false otherwise.
  */
-export function includes(value: any, array: any[]): boolean
+export function includes<T>(value?: T, array?: T[]): boolean
 
 /**
  * Returns the first index at which a given value can be found in an array.
@@ -205,7 +209,7 @@ export function includes(value: any, array: any[]): boolean
  *
  * @returns The first index of the element, or -1 otherwise.
  */
-export function indexOf(value: any, array: any[]): number
+export function indexOf<T>(value?: T, array?: T[]): number
 
 /**
  * Determines whether the passed value is an Array.
@@ -214,7 +218,7 @@ export function indexOf(value: any, array: any[]): number
  *
  * @returns true if value is an Array, false otherwise.
  */
-export function isArray(value: any): boolean
+export function isArray<T>(value?: T): boolean
 
 /**
  * Determines whether the passed value is an empty object, array, map, or set.
@@ -223,7 +227,7 @@ export function isArray(value: any): boolean
  *
  * @returns true if the provided collection is empty, false otherwise.
  */
-export function isEmpty(value: any): boolean
+export function isEmpty<T>(value?: T): boolean
 
 /**
  * Determines whether the passed value is a function.
@@ -232,7 +236,7 @@ export function isEmpty(value: any): boolean
  *
  * @returns true if value is a function, false otherwise.
  */
-export function isFunction(value: any): boolean
+export function isFunction<T>(value?: T): boolean
 
 /**
  * Determines whether the passed value is null.
@@ -241,7 +245,7 @@ export function isFunction(value: any): boolean
  *
  * @returns true if value is null, false otherwise.
  */
-export function isNull(value: any): boolean
+export function isNull<T>(value?: T): boolean
 
 /**
  * Determines whether the passed value is a number.
@@ -250,7 +254,7 @@ export function isNull(value: any): boolean
  *
  * @returns true if value is a number, false otherwise.
  */
-export function isNumber(value: any): boolean
+export function isNumber<T>(value?: T): boolean
 
 /**
  * Determines whether the passed object is a plain object.
@@ -259,7 +263,7 @@ export function isNumber(value: any): boolean
  *
  * @returns true if value is a plain object, false otherwise.
  */
-export function isPlainObject(value: any): boolean
+export function isPlainObject<T>(value?: T): boolean
 
 /**
  * Determines whether the passed object is a string.
@@ -268,7 +272,7 @@ export function isPlainObject(value: any): boolean
  *
  * @returns true if value is a string, false otherwise.
  */
-export function isString(value: any): boolean
+export function isString<T>(value?: T): boolean
 
 /**
  * Determines whether the passed object is undefined.
@@ -277,7 +281,7 @@ export function isString(value: any): boolean
  *
  * @returns true if value is undefined, false otherwise.
  */
-export function isUndefined(value: any): boolean
+export function isUndefined<T>(value?: T): boolean
 
 /**
  * Converts elements in the provided array into a string separated by separator.
@@ -287,7 +291,7 @@ export function isUndefined(value: any): boolean
  *
  * @returns The joined string.
  */
-export function join(separator: string, array: string[] | number[]): string
+export function join(separator?: string, array?: string[] | number[]): string
 
 /**
  * Creates an array of the own enumerable property names of the provided object.
@@ -296,7 +300,7 @@ export function join(separator: string, array: string[] | number[]): string
  *
  * @returns An array of property names.
  */
-export function keys(object: object): any[]
+export function keys<T>(object?: object): T[]
 
 /**
  * Gets the last element of an array.
@@ -305,7 +309,7 @@ export function keys(object: object): any[]
  *
  * @returns The last element of the array.
  */
-export function last(array: any[]): any
+export function last<T>(array?: T[]): T
 
 /**
  * Returns the last index of the provided value in an array.
@@ -315,7 +319,7 @@ export function last(array: any[]): any
  *
  * @returns The index of the matched value, else -1.
  */
-export function lastIndexOf(value: any, array: any[]): number
+export function lastIndexOf<T>(value?: T, array?: T[]): number
 
 /**
  * Converts a string to lowercase.
@@ -324,7 +328,7 @@ export function lastIndexOf(value: any, array: any[]): number
  *
  * @returns A lowercased copy of the string.
  */
-export function lowercase(string: string): string
+export function lowercase(string?: string): string
 
 /**
  * Creates a new array by invoking the provided callback on every element of an array.
@@ -334,10 +338,10 @@ export function lowercase(string: string): string
  *
  * @returns The new mapped array.
  */
-export function map(
-  callback: (currentValue: any, index: number, array: any[]) => any,
-  data: any[]
-): any[]
+export function map<T1, T2>(
+  callback?: (currentValue: T1, index: number, array: T1[]) => T2,
+  data?: T1[]
+): T2[]
 
 /**
  * Returns the maximal value from an array.
@@ -346,7 +350,7 @@ export function map(
  *
  * @returns The maximum value or undefined if array is falsey.
  */
-export function max(numbers: number[]): number | undefined
+export function max(numbers?: number[]): number | undefined
 
 /**
  * Shallowly merges objects together. Shared keys from sources will overwrite keys in target. Source priority are applied from right to left.
@@ -356,7 +360,7 @@ export function max(numbers: number[]): number | undefined
  *
  * @returns The merged object.
  */
-export function merge(target: object, ...sources: object[]): object
+export function merge(target?: object, ...sources: object[]): object
 
 /**
  * Recursively merges two objects together. Shared keys from source will overwrite keys in target.
@@ -366,7 +370,7 @@ export function merge(target: object, ...sources: object[]): object
  *
  * @returns The merged object.
  */
-export function mergeDeep(target: object, source: object): object
+export function mergeDeep(target?: object, source?: object): object
 
 /**
  * Returns the minimal value from an array.
@@ -375,7 +379,7 @@ export function mergeDeep(target: object, source: object): object
  *
  * @returns The minimum value or undefined if array is falsey.
  */
-export function min(numbers: number[]): number | undefined
+export function min(numbers?: number[]): number | undefined
 
 /**
  * Returns undefined.
@@ -390,7 +394,7 @@ export function noop(): undefined
  *
  * @returns An array containing the boolean values.
  */
-export function pairsEq(pairs: any[], pairsTwo: any[]): boolean[]
+export function pairsEq<T>(pairs?: T[], pairsTwo?: T[]): boolean[]
 
 /**
  * Checks if the properties of two objects are equal.
@@ -402,9 +406,9 @@ export function pairsEq(pairs: any[], pairsTwo: any[]): boolean[]
  * @returns true if the value at the specified key for both objects are equal, false otherwise.
  */
 export function propsEq(
-  key: string,
-  object: object,
-  objectTwo: object
+  key?: string,
+  object?: object,
+  objectTwo?: object
 ): boolean[]
 
 /**
@@ -416,16 +420,16 @@ export function propsEq(
  *
  * @returns Result of the reduction.
  */
-export function reduce(
-  callback: (
-    accumulator: any,
-    currentValue: any,
+export function reduce<T1, T2>(
+  callback?: (
+    accumulator: T1,
+    currentValue: T2,
     index: number,
-    array: any[]
+    array: T2[]
   ) => any,
-  initialValue: any,
-  data: any[]
-): any
+  initialValue?: T1,
+  data?: T2[]
+): T1
 
 /**
  * Replaces matched patterns in a string.
@@ -437,9 +441,9 @@ export function reduce(
  * @returns A new modified string.
  */
 export function replace(
-  pattern: RegExp | string,
-  replacement: string,
-  source: string
+  pattern?: RegExp | string,
+  replacement?: string,
+  source?: string
 ): string
 
 /**
@@ -449,7 +453,7 @@ export function replace(
  *
  * @returns A Promise that is resolved with the given value.
  */
-export function resolve(promise: Promise<any>): any
+export function resolve<T>(promise?: Promise<T>): T
 
 /**
  * Creates an array that is the reversed content of the provided array.
@@ -458,7 +462,7 @@ export function resolve(promise: Promise<any>): any
  *
  * @returns A new array containing the reversed values.
  */
-export function reverse(array: any[]): any[]
+export function reverse<T>(array?: T[]): T[]
 
 /**
  * Gets a single random element from an array.
@@ -467,7 +471,7 @@ export function reverse(array: any[]): any[]
  *
  * @returns The random element.
  */
-export function sample(array: any[]): any
+export function sample<T>(array?: T[]): T
 
 /**
  * Creates an array that is the shuffled content of the provided array.
@@ -476,7 +480,7 @@ export function sample(array: any[]): any
  *
  * @returns A new array containing the shuffled contents.
  */
-export function shuffle(array: any[]): any[]
+export function shuffle<T>(array?: T[]): T[]
 
 /**
  * Gets the size of an iterable collection. Can be an array-like, object, Map, Set, etc.
@@ -485,7 +489,7 @@ export function shuffle(array: any[]): any[]
  *
  * @returns The collection size.
  */
-export function size(object: any[] | object | Map<any, any> | Set<any>): number
+export function size<T, K>(object?: T[] | object | Map<K, T> | Set<T>): number
 
 /**
  * Creates a slice of an array from a specified start and end, exclusively.
@@ -496,7 +500,7 @@ export function size(object: any[] | object | Map<any, any> | Set<any>): number
  *
  * @returns A new array containing the sliced contents.
  */
-export function slice(start: number, end: number, array: any[]): any[]
+export function slice<T>(start?: number, end?: number, array?: T[]): T[]
 
 /**
  * Checks if the provided callback returns truthy for any element of an array.
@@ -506,7 +510,10 @@ export function slice(start: number, end: number, array: any[]): any[]
  *
  * @returns true if any element passes the function condition, false otherwise.
  */
-export function some(callback: (element: any) => boolean, array: any[]): boolean
+export function some<T>(
+  callback?: (element?: T) => boolean,
+  array?: T[]
+): boolean
 
 /**
  * Sorts elements of an array. The default sort order is built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
@@ -515,7 +522,7 @@ export function some(callback: (element: any) => boolean, array: any[]): boolean
  *
  * @returns A new array containing the sorted contents.
  */
-export function sort(array: any[]): any[]
+export function sort<T>(array?: T[]): T[]
 
 /**
  * Sorts an array by a provided key or callback in ascending order.
@@ -525,7 +532,7 @@ export function sort(array: any[]): any[]
  *
  * @returns A new array containing the sorted contents.
  */
-export function sortBy(keyOrFunction: any, array: any[]): any[]
+export function sortBy<T1, T2>(keyOrFunction?: T1, array?: T2[]): T2[]
 
 /**
  * Creates an array by changing the contents of an array by removing or replacing existing elements and/or adding new elements.
@@ -537,12 +544,12 @@ export function sortBy(keyOrFunction: any, array: any[]): any[]
  *
  * @returns A new array with the spliced contents.
  */
-export function splice(
+export function splice<T>(
   start: number,
   deleteCount: number,
-  item: any,
-  array: any[]
-): any[]
+  item: T,
+  array: T[]
+): T[]
 
 /**
  * Splits a string by the provided `delimiter`.
@@ -552,7 +559,7 @@ export function splice(
  *
  * @returns An array containing the string segments.
  */
-export function split(delimiter: string, sourceStr: string): string
+export function split(delimiter?: string, sourceStr?: string): string
 
 /**
  * Start Cases the provided string.
@@ -561,7 +568,7 @@ export function split(delimiter: string, sourceStr: string): string
  *
  * @returns The Start Cased string.
  */
-export function startCase(source: string): string
+export function startCase(source?: string): string
 
 /**
  * Determines whether a string begins with the specified characters.
@@ -571,7 +578,7 @@ export function startCase(source: string): string
  *
  * @returns `true` if `startStr` is at the beginning of the provided string, `false` otherwise.
  */
-export function startsWith(startStr: string, string: string): boolean
+export function startsWith(startStr?: string, string?: string): boolean
 
 /**
  * Creates an array containing all but the first element of an array.
@@ -580,7 +587,7 @@ export function startsWith(startStr: string, string: string): boolean
  *
  * @returns A new array containing the tail elements.
  */
-export function tail(array: any[]): any
+export function tail<T>(array?: T[]): T[]
 
 /**
  * Creates a slice of an array with `amount` elements taken from the start.
@@ -590,7 +597,7 @@ export function tail(array: any[]): any
  *
  * @returns A new array containing the slice of `array`.
  */
-export function take(amount: number, array: any[]): any[]
+export function take<T>(amount?: number, array?: T[]): T[]
 
 /**
  * Invokes the specified `callback` `numTimes`.
@@ -600,7 +607,10 @@ export function take(amount: number, array: any[]): any[]
  *
  * @returns The array of results containing the return values of `callback`.
  */
-export function times(callback: (index: number) => any, numTimes: number): any[]
+export function times<T>(
+  callback?: (index?: number) => T,
+  numTimes?: number
+): T[]
 
 /**
  * Converts `value` to an array.
@@ -609,7 +619,7 @@ export function times(callback: (index: number) => any, numTimes: number): any[]
  *
  * @returns The converted array.
  */
-export function toArray(value: any): any[]
+export function toArray<T>(value?: T): T[]
 
 /**
  * Removes leading and trailing whitespace from `string`.
@@ -618,7 +628,7 @@ export function toArray(value: any): any[]
  *
  * @returns A new trimmed string.
  */
-export function trim(string: string): string
+export function trim(string?: string): string
 
 /**
  * Removes duplicates from `array`.
@@ -627,7 +637,7 @@ export function trim(string: string): string
  *
  * @returns The new duplicate free array.
  */
-export function uniq(array: any[]): any[]
+export function uniq<T>(array?: T[]): T[]
 
 /**
  * Generates a unique ID. If `prefix` is given, the generated ID is appended to it.
@@ -636,7 +646,7 @@ export function uniq(array: any[]): any[]
  *
  * @returns The unique ID.
  */
-export function uniqueId(prefix: string): number
+export function uniqueId(prefix?: string): number
 
 /**
  * Uppercases the first character in the provided `string`.
@@ -645,7 +655,7 @@ export function uniqueId(prefix: string): number
  *
  * @returns A new string whose first character is Uppercased.
  */
-export function upperFirst(string: string): string
+export function upperFirst(string?: string): string
 
 /**
  * UPPERCASES the provided string.
@@ -654,7 +664,7 @@ export function upperFirst(string: string): string
  *
  * @returns A new string whose contents are UPPERCASED.
  */
-export function uppercase(string: string): string
+export function uppercase(string?: string): string
 
 /**
  * Returns an array containing the enumerable values of the provided `object`.
@@ -663,7 +673,7 @@ export function uppercase(string: string): string
  *
  * @returns An array containing the values.
  */
-export function values(object: object): any[]
+export function values<T>(object?: object): T[]
 
 /**
  * Creates an array of grouped elements. The first group contains the first elements of the two arrays, the second contains the second elements, and so on.
@@ -673,7 +683,10 @@ export function values(object: object): any[]
  *
  * @returns The new array of grouped elements.
  */
-export function zip(arrOne: any[], arrTwo: any[]): any[]
+export function zip<T1, T2>(
+  arrOne?: T1[],
+  arrTwo?: T2[]
+): Array<[T1 | undefined, T2 | undefined]>
 
 /**
  * Creates an array of grouped elements based on the provided callback. The callback is invoked with the appropriate index values of each array for the current iteration.
@@ -684,8 +697,8 @@ export function zip(arrOne: any[], arrTwo: any[]): any[]
  *
  * @returns The new array of grouped elements.
  */
-export function zipWith(
-  callback: (arrOneCurr: any, arrTwoCurr: any) => any,
-  arrOne: any[],
-  arrTwo: any[]
-): any[]
+export function zipWith<T1, T2>(
+  callback?: (arrOneCurr?: T1, arrTwoCurr?: T2) => T1 | T2,
+  arrOne?: T1[],
+  arrTwo?: T2[]
+): Array<[T1 | undefined, T2 | undefined]>
