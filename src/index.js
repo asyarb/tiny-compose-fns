@@ -1,36 +1,38 @@
 import { curry } from 'curriable'
 
 import {
-  map as mapB,
-  filter as filterB,
-  forEach as forEachB,
-  join as joinB,
-  take as takeB,
+  chunk as chunkB,
   concat as concatB,
+  filter as filterB,
   find as findB,
-  some as someB,
   flatDepth as flatDepthB,
   flatMap as flatMapB,
-  slice as sliceB,
-  includes as includesB,
-  sortBy as sortByB,
-  indexOf as indexOfB,
-  lastIndexOf as lastIndexOfB,
+  forEach as forEachB,
   get as getB,
   has as hasB,
+  includes as includesB,
+  indexOf as indexOfB,
+  join as joinB,
+  lastIndexOf as lastIndexOfB,
+  map as mapB,
   merge as mergeB,
   mergeDeep as mergeDeepB,
-  startsWith as startsWithB,
-  replace as replaceB,
-  split as splitB,
-  chunk as chunkB,
-  times as timesB,
-  splice as spliceB,
-  zip as zipB,
-  zipWith as zipWithB,
   pairsEq as pairsEqB,
   propsEq as propsEqB,
   reduce as reduceB,
+  replace as replaceB,
+  slice as sliceB,
+  some as someB,
+  sortWith as sortWithB,
+  sortBy as sortByB,
+  sortByDesc as sortByDescB,
+  splice as spliceB,
+  split as splitB,
+  startsWith as startsWithB,
+  take as takeB,
+  times as timesB,
+  zip as zipB,
+  zipWith as zipWithB,
 } from './base'
 
 export const compose = (...c) => (...a) => {
@@ -40,75 +42,77 @@ export const compose = (...c) => (...a) => {
   return a
 }
 
-export const map = curry(mapB)
-export const filter = curry(filterB)
-export const forEach = curry(forEachB)
-export const join = curry(joinB)
-export const take = curry(takeB)
+export const chunk = curry(chunkB)
 export const concat = curry(concatB)
+export const filter = curry(filterB)
 export const find = curry(findB)
-export const some = curry(someB)
 export const flatDepth = curry(flatDepthB)
 export const flatMap = curry(flatMapB)
-export const slice = curry(sliceB)
-export const includes = curry(includesB)
-export const sortBy = curry(sortByB)
-export const indexOf = curry(indexOfB)
-export const lastIndexOf = curry(lastIndexOfB)
+export const forEach = curry(forEachB)
 export const get = curry(getB)
 export const has = curry(hasB)
+export const includes = curry(includesB)
+export const indexOf = curry(indexOfB)
+export const join = curry(joinB)
+export const lastIndexOf = curry(lastIndexOfB)
+export const map = curry(mapB)
 export const merge = curry(mergeB)
 export const mergeDeep = curry(mergeDeepB)
-export const startsWith = curry(startsWithB)
-export const replace = curry(replaceB)
-export const split = curry(splitB)
-export const chunk = curry(chunkB)
-export const times = curry(timesB)
-export const splice = curry(spliceB)
-export const zip = curry(zipB)
-export const zipWith = curry(zipWithB)
 export const pairsEq = curry(pairsEqB)
 export const propsEq = curry(propsEqB)
 export const reduce = curry(reduceB)
+export const replace = curry(replaceB)
+export const slice = curry(sliceB)
+export const some = curry(someB)
+export const sortWith = curry(sortWithB)
+export const sortBy = curry(sortByB)
+export const sortByDesc = curry(sortByDescB)
+export const splice = curry(spliceB)
+export const split = curry(splitB)
+export const startsWith = curry(startsWithB)
+export const take = curry(takeB)
+export const times = curry(timesB)
+export const zip = curry(zipB)
+export const zipWith = curry(zipWithB)
 
 export {
-  noop,
+  allProm,
+  camelCase,
+  castArray,
+  compact,
+  entries,
+  first,
+  flat,
+  flatDeep,
+  fromEntries,
+  isArray,
   isEmpty,
+  isFunction,
   isNull,
-  isUndefined,
-  isString,
   isNumber,
   isPlainObject,
-  isFunction,
-  isArray,
-  first,
-  last,
-  tail,
-  fromEntries,
-  entries,
+  isString,
+  isUndefined,
+  kebabCase,
   keys,
-  values,
-  allProm,
-  resolve,
+  last,
   lowercase,
-  camelCase,
-  uppercase,
-  upperFirst,
-  trim,
-  uniq,
-  shuffle,
-  flatDeep,
-  flat,
-  compact,
-  reverse,
-  sort,
-  size,
   max,
   min,
-  startCase,
+  noop,
+  resolve,
+  reverse,
   sample,
-  uniqueId,
+  shuffle,
+  size,
+  sort,
+  startCase,
+  tail,
   toArray,
-  castArray,
-  kebabCase,
+  trim,
+  uniq,
+  uniqueId,
+  uppercase,
+  upperFirst,
+  values,
 } from './base'

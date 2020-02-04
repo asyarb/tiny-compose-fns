@@ -522,17 +522,37 @@ export function some<T>(
  *
  * @returns A new array containing the sorted contents.
  */
-export function sort<T>(array?: T[]): T[]
+export function sort<T>(array: T[]): T[]
 
 /**
- * Sorts an array by a provided key or callback in ascending order.
+ * Sorts an array by the provided callback function.
  *
- * @param keyOrFunction - Object key or callback function to determine by which criterion to sort.
+ * @param fn - Callback function to sort by.
+ * @param array - The array to sort.
+ *
+ * @return A new array containing the sorted contents.
+ */
+export function sortWith<T>(fn: () => 1 | -1 | 0, array: T[]): T[]
+
+/**
+ * Sorts an array of objects by a provided key in ascending order.
+ *
+ * @param key - Object key to sort by.
  * @param array - The array to sort.
  *
  * @returns A new array containing the sorted contents.
  */
-export function sortBy<T1, T2>(keyOrFunction?: T1, array?: T2[]): T2[]
+export function sortBy<T>(key: string, array?: T[]): T[]
+
+/**
+ * Sorts an array of objects by a provided key in descending order.
+ *
+ * @param key - Object key to sort by.
+ * @param array - The array to sort.
+ *
+ * @returns A new array containing the sorted contents.
+ */
+export function sortByDesc<T>(key: string, array: T[]): T[]
 
 /**
  * Creates an array by changing the contents of an array by removing or replacing existing elements and/or adding new elements.

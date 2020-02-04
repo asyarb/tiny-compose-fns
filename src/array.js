@@ -103,12 +103,20 @@ export const includes = (val, arr) =>
 
 export const sort = arr => (Array.isArray(arr) ? arr.map(i => i).sort() : [])
 
-const sortByWith = key => (a, b) =>
+export const sortWith = (fn, arr) =>
+  Array.isArray(arr) ? arr.map(i => i).sort(fn) : []
+
+const sortByKeyAsec = key => (a, b) =>
   a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0
-export const sortBy = (keyOrFn, arr) =>
-  Array.isArray(arr)
-    ? arr.map(i => i).sort(isFunction(keyOrFn) ? keyOrFn : sortByWith(keyOrFn))
-    : []
+
+export const sortBy = (key, arr) =>
+  Array.isArray(arr) ? arr.map(i => i).sort(sortByKeyAsec(key)) : []
+
+const sortByKeyDesc = key => (a, b) =>
+  a[key] > b[key] ? -1 : b[key] > a[key] ? 1 : 0
+
+export const sortByDesc = (key, arr) =>
+  Array.isArray(arr) ? arr.map(i => i).sort(sortByKeyDesc(key)) : []
 
 export const uniq = arr => (Array.isArray(arr) ? [...new Set(arr)] : [])
 

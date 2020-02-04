@@ -21,6 +21,8 @@ import {
   slice,
   includes,
   sort,
+  sortWith,
+  sortByDesc,
   sortBy,
   uniq,
   shuffle,
@@ -573,6 +575,7 @@ describe('sortBy', () => {
       { user: 'barney', age: 36, active: true },
       { user: 'fred', age: 40, active: false },
     ])
+
     expect(sortBy('user', users)).toEqual([
       { user: 'barney', age: 36, active: true },
       { user: 'fred', age: 40, active: false },
@@ -585,7 +588,49 @@ describe('sortBy', () => {
       { user: 'pebbles', age: 1, active: true },
     ])
   })
+})
 
+describe('sortByDesc', () => {
+  it('returns an empty array if array is a bad value', () => {
+    expect(sortByDesc(1, undefined)).toEqual([])
+    expect(sortByDesc(1, null)).toEqual([])
+    expect(sortByDesc(1, 'foo')).toEqual([])
+    expect(sortByDesc(1, {})).toEqual([])
+    expect(sortByDesc(1, 1)).toEqual([])
+    expect(sortByDesc()).toEqual([])
+  })
+
+  it('returns the same array if sortBy key is not valid for the array', () => {
+    expect(sortByDesc(undefined, arr)).toEqual(arr)
+    expect(sortByDesc(null, arr)).toEqual(arr)
+    expect(sortByDesc(1, arr)).toEqual(arr)
+    expect(sortByDesc('foo', arr)).toEqual(arr)
+    expect(sortByDesc({}, arr)).toEqual(arr)
+    expect(sortByDesc([], arr)).toEqual(arr)
+  })
+
+  it('immutably sorts the array', () => {
+    expect(sortByDesc('age', users)).toEqual([
+      { user: 'fred', age: 40, active: false },
+      { user: 'barney', age: 36, active: true },
+      { user: 'pebbles', age: 1, active: true },
+    ])
+
+    expect(sortByDesc('user', users)).toEqual([
+      { user: 'pebbles', age: 1, active: true },
+      { user: 'fred', age: 40, active: false },
+      { user: 'barney', age: 36, active: true },
+    ])
+
+    expect(users).toEqual([
+      { user: 'barney', age: 36, active: true },
+      { user: 'fred', age: 40, active: false },
+      { user: 'pebbles', age: 1, active: true },
+    ])
+  })
+})
+
+describe('sortWith', () => {
   it('immutably sorts the array if provided a custom function comparator', () => {
     const comparator = (first, second) => {
       if (first.age < second.age) return -1
@@ -593,7 +638,7 @@ describe('sortBy', () => {
       if (first.age > second.age) return 1
     }
 
-    expect(sortBy(comparator, users)).toEqual([
+    expect(sortWith(comparator, users)).toEqual([
       { user: 'pebbles', age: 1, active: true },
       { user: 'barney', age: 36, active: true },
       { user: 'fred', age: 40, active: false },
@@ -861,13 +906,22 @@ describe('zip', () => {
   it('zips two arrays into grouped elements', () => {
     const arr2 = [4, 5, 6]
 
-    expect(zip(arr, arr2)).toEqual([[1, 4], [2, 5], [3, 6]])
+    expect(zip(arr, arr2)).toEqual([
+      [1, 4],
+      [2, 5],
+      [3, 6],
+    ])
   })
 
   it('zips two arrays with differing elements', () => {
     const arr2 = [4, 5, 6, 7]
 
-    expect(zip(arr, arr2)).toEqual([[1, 4], [2, 5], [3, 6], [undefined, 7]])
+    expect(zip(arr, arr2)).toEqual([
+      [1, 4],
+      [2, 5],
+      [3, 6],
+      [undefined, 7],
+    ])
   })
 })
 
