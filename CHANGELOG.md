@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.1](https://github.com/asyarb/tiny-compose-fns/compare/v0.13.0...v0.13.1) (2020-02-04)
+
+
+### Features
+
+* sortByDesc ([e074b62](https://github.com/asyarb/tiny-compose-fns/commit/e074b625b1d45cfb633c0a6bb624a172b39479f2))
+
 ## [0.13.0](https://github.com/asyarb/tiny-compose-fns/compare/v0.12.0...v0.13.0) (2019-08-14)
 
 
