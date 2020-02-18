@@ -1,34 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export function castArray(val) {
-  if (!arguments.length) return []
-
-  return Array.isArray(val) ? val : [val]
-}
-
-export const times = (fn, num) => {
-  const arr = []
-  for (let i = 0; i < num; i++) {
-    arr[i] = fn(i)
-  }
-
-  return arr
-}
-
-export const toArray = val =>
-  isPlainObject(val)
-    ? Array.from(Object.values(val))
-    : val
-    ? Array.from(val)
-    : []
-
-export const reduce = (fn, accumulator, arr) =>
-  !isFunction(fn)
-    ? [].reduce(fn)
-    : Array.isArray(arr)
-    ? arr.reduce(fn, accumulator)
-    : accumulator
-
 export const map = (fn, arr) =>
   !isFunction(fn) ? [].map(fn) : Array.isArray(arr) ? arr.map(fn) : []
 
