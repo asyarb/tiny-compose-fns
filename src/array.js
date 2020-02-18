@@ -1,31 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const flat = arr => (Array.isArray(arr) ? arr.flat() : [])
-
-export const flatDepth = (num, arr) => (Array.isArray(arr) ? arr.flat(num) : [])
-
-export const flatDeep = arr => (Array.isArray(arr) ? arr.flat(Infinity) : [])
-
-export const flatMap = (fn, arr) => (Array.isArray(arr) ? arr.flatMap(fn) : [])
-
-export const reverse = arr =>
-  Array.isArray(arr) ? arr.map(i => i).reverse() : arr
-
-export const splice = (start, deleteCount, item, arr) => {
-  if (!Array.isArray(arr)) return []
-
-  const copy = arr.map(i => i)
-  copy.splice(start, deleteCount, item)
-
-  return copy
-}
-
-export const slice = (start = 0, end = 0, arr) =>
-  Array.isArray(arr) ? arr.slice(start, end) : []
-
-export const includes = (val, arr) =>
-  Array.isArray(arr) ? arr.includes(val) : false
-
 export const sort = arr => (Array.isArray(arr) ? arr.map(i => i).sort() : [])
 
 export const sortWith = (fn, arr) =>
