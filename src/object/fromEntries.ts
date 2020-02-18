@@ -7,5 +7,5 @@ import { Collection } from '../types'
  *
  * @returns A new object whose properties are given by the entries of the array.
  */
-export const fromEntries = (arr: Collection) =>
-  Array.isArray(arr) ? Object.fromEntries(arr) : {}
+export const fromEntries = (entries: Collection) =>
+  Array.isArray(entries) ? Object.fromEntries(entries) : {}
