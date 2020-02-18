@@ -1,10 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const first = arr => (Array.isArray(arr) ? arr[0] : undefined)
-
-export const last = arr =>
-  Array.isArray(arr) ? arr[arr.length - 1] : undefined
-
 export const tail = arr => {
   if (!Array.isArray(arr)) return []
   const [, ...x] = arr
