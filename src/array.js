@@ -1,7 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const join = (sep, arr) => (Array.isArray(arr) ? arr.join(sep) : '')
-
 export const first = arr => (Array.isArray(arr) ? arr[0] : undefined)
 
 export const last = arr =>
