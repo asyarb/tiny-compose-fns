@@ -1,5 +1,11 @@
 import { isPlainObject } from '../utils/isPlainObject'
-import { Collection } from '../types'
+import { castArray } from './castArray'
+
+type ObjectArgument<T> = { [key: string]: T }
+type ArgumentOptions = {
+  <T>(value: ObjectArgument<T>): T[]
+  <T>(value: T): T[]
+}
 
 /**
  * Converts `value` to an array.
@@ -8,9 +14,11 @@ import { Collection } from '../types'
  *
  * @returns The converted array.
  */
-export const toArray = <T>(value: Collection): T[] =>
-  isPlainObject(value)
-    ? Array.from(Object.values(value))
-    : value
-    ? Array.from(value as [])
-    : []
+export const toArray: ArgumentOptions = <T>(value: ObjectArgument<T> | T) => {
+  if (isPlainObject(value)) return Object.values(value)
+
+  if (!value) return []
+  const test = value
+
+  return castArray(test)
+}

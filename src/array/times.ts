@@ -7,7 +7,7 @@
  * @returns The array of results containing the return values of `callback`.
  */
 export const times = <T>(callback: (idx: number) => T, numTimes: number) => {
-  const arr = []
+  let arr = []
 
   for (let i = 0; i < numTimes; i++) {
     arr[i] = callback(i)

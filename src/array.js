@@ -1,14 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const map = (fn, arr) =>
-  !isFunction(fn) ? [].map(fn) : Array.isArray(arr) ? arr.map(fn) : []
-
-export const filter = (fn, arr) =>
-  !isFunction(fn) ? [].filter(fn) : Array.isArray(arr) ? arr.filter(fn) : []
-
-export const forEach = (fn, arr) =>
-  !isFunction(fn) ? [].forEach(fn) : Array.isArray(arr) && arr.forEach(fn)
-
 export const join = (sep, arr) => (Array.isArray(arr) ? arr.join(sep) : '')
 
 export const first = arr => (Array.isArray(arr) ? arr[0] : undefined)

@@ -22,7 +22,7 @@ export const reduce = <Item, Accumulator>(
   data: Item[]
 ) => {
   if (!isFunction(callback)) return initialValue
-  if (Array.isArray(data)) data.reduce(callback, initialValue)
+  if (!Array.isArray(data)) return initialValue
 
-  return initialValue
+  return data.reduce(callback, initialValue)
 }

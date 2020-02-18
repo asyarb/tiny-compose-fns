@@ -5,7 +5,7 @@
  *
  * @returns The cast array.
  */
-export function castArray(value: unknown) {
+export function castArray<T>(value: T): T[] {
   if (!arguments.length) return []
 
   return Array.isArray(value) ? value : [value]
