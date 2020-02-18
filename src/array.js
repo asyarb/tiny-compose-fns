@@ -1,10 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const compact = arr => (Array.isArray(arr) ? arr.filter(Boolean) : [])
-
-export const concat = (arr, vals) =>
-  Array.isArray(arr) ? [...arr, ...castArray(vals)] : [arr]
-
 export const find = (fn, arr) => (Array.isArray(arr) ? arr.find(fn) : undefined)
 
 export const some = (fn, arr) => (Array.isArray(arr) ? arr.some(fn) : false)
