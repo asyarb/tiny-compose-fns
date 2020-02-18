@@ -1,7 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const some = (fn, arr) => (Array.isArray(arr) ? arr.some(fn) : false)
-
 export const flat = arr => (Array.isArray(arr) ? arr.flat() : [])
 
 export const flatDepth = (num, arr) => (Array.isArray(arr) ? arr.flat(num) : [])
