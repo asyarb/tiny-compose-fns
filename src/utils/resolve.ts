@@ -5,4 +5,5 @@
  *
  * @returns A Promise that is resolved with the given value.
  */
-export const resolve = async <T>(value: T) => await Promise.resolve(value)
+export const resolve = async <T>(value: Promise<T>) =>
+  await Promise.resolve(value)
