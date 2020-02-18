@@ -1,4 +1,5 @@
 import { isMapOrSet } from '../helpers/isMapOrSet'
+import { Collection } from '../types'
 
 /**
  * Determines whether the provided value is an empty object, array, map, or set.
@@ -7,12 +8,12 @@ import { isMapOrSet } from '../helpers/isMapOrSet'
  *
  * @returns true if the provided collection is empty, false otherwise.
  */
-export const isEmpty = (value: unknown) => {
-  if (isMapOrSet(value)) return Boolean((value as Set<number>).size)
+export const isEmpty = <T>(value: Collection<T> | string) => {
+  if (isMapOrSet(value)) return Boolean((value as Set<T>).size)
 
   return (
-    //@ts-ignore
     // Unsure of how to resolve this.
+    //@ts-ignore
     [Object, Array].includes((value || {}).constructor) &&
     !Object.entries(value || {}).length
   )

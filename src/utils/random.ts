@@ -6,12 +6,13 @@
  *
  * @returns A random number between the provided bounds.
  */
-export const random = (lower: number, upper: number) => {
+export const random = (lower: number, upper: number): number => {
   if (!upper || typeof upper === 'boolean') {
     upper = lower
     lower = 0
   }
 
   let randomic = Math.random() * upper
+
   return randomic >= lower ? randomic : random(lower, upper)
 }

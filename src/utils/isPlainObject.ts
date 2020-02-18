@@ -1,4 +1,5 @@
 import { isMapOrSet } from '../helpers/isMapOrSet'
+import { Collection } from '../types'
 
 /**
  * Determines whether the passed object is a plain object.
@@ -7,7 +8,7 @@ import { isMapOrSet } from '../helpers/isMapOrSet'
  *
  * @returns true if value is a plain object, false otherwise.
  */
-export const isPlainObject = (value: unknown) =>
+export const isPlainObject = <T>(value: Collection<T>) =>
   isMapOrSet(value)
     ? false
     : value !== null && typeof value === 'object' && !Array.isArray(value)

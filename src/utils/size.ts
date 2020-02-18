@@ -9,7 +9,7 @@ import { isMapOrSet } from '../helpers/isMapOrSet'
  */
 export const size = (obj: unknown = {}) => {
   if (isMapOrSet(obj)) return (obj as Set<number>).size
-  if (obj !== null) return Object.keys(obj).length
+  if (obj !== null) return Object.keys(obj as object).length
 
   return 0
 }
