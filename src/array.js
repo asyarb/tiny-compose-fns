@@ -1,15 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const tail = arr => {
-  if (!Array.isArray(arr)) return []
-  const [, ...x] = arr
-
-  return x
-}
-
-export const take = (num = 1, arr) =>
-  Array.isArray(arr) ? arr.slice(0, num === null ? 1 : num < 0 ? 0 : num) : []
-
 export const chunk = (size, arr) =>
   Array.isArray(arr) && isNumber(size)
     ? arr.reduce(
