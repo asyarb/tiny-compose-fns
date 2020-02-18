@@ -5,8 +5,8 @@
  *
  * @returns The cast array.
  */
-export function castArray<T>(value: T): T[] {
-  if (!arguments.length) return []
+export const castArray = <T>(value: T): T[] => {
+  if (!value) return []
 
   return Array.isArray(value) ? value : [value]
 }

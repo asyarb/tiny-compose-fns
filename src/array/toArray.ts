@@ -2,7 +2,7 @@ import { isPlainObject } from '../utils/isPlainObject'
 import { castArray } from './castArray'
 
 type ObjectArgument<T> = { [key: string]: T }
-type ArgumentOptions = {
+type ArgumentOverloads = {
   <T>(value: ObjectArgument<T>): T[]
   <T>(value: T): T[]
 }
@@ -14,7 +14,7 @@ type ArgumentOptions = {
  *
  * @returns The converted array.
  */
-export const toArray: ArgumentOptions = <T>(value: ObjectArgument<T> | T) => {
+export const toArray: ArgumentOverloads = <T>(value: ObjectArgument<T> | T) => {
   if (isPlainObject(value)) return Object.values(value)
 
   if (!value) return []
