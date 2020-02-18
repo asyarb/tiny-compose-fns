@@ -8,13 +8,11 @@ import { Collection } from '../types'
  *
  * @returns true if the provided collection is empty, false otherwise.
  */
-export const isEmpty = <T>(value: Collection<T> | string) => {
-  if (isMapOrSet(value)) return Boolean((value as Set<T>).size)
+export const isEmpty = (value: Collection) => {
+  if (isMapOrSet(value)) return Boolean((value as Set<unknown>).size)
 
   return (
-    // Unsure of how to resolve this.
-    //@ts-ignore
-    [Object, Array].includes((value || {}).constructor) &&
+    [Object, Array].includes((value || {}).constructor as any) &&
     !Object.entries(value || {}).length
   )
 }

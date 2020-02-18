@@ -1,1 +1,1 @@
-export type Collection<T> = object | T[] | Map<unknown, T> | Set<T>
+export type Collection = any[] | object | Map<any, any> | Set<any>

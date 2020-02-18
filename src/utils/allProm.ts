@@ -7,5 +7,5 @@ import { Collection } from '../types'
  *
  * @returns A single Promise that resolves when all Promises have resolved or rejects with the reason of the first Promise that rejects.
  */
-export const allProm = async <T>(arr: Collection<T>) =>
+export const allProm = async (arr: Collection) =>
   Array.isArray(arr) ? await Promise.all(arr) : []

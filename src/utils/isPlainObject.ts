@@ -8,7 +8,7 @@ import { Collection } from '../types'
  *
  * @returns true if value is a plain object, false otherwise.
  */
-export const isPlainObject = <T>(value: Collection<T>) =>
+export const isPlainObject = (value: Collection) =>
   isMapOrSet(value)
     ? false
     : value !== null && typeof value === 'object' && !Array.isArray(value)

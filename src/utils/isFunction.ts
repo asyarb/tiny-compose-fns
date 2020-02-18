@@ -1,5 +1,3 @@
-import { Collection } from 'types'
-
 /**
  * Determines whether the passed value is a function.
  *
@@ -7,7 +5,7 @@ import { Collection } from 'types'
  *
  * @returns true if value is a function, false otherwise.
  */
-export const isFunction = <T>(value: Collection<T>) =>
+export const isFunction = (value: unknown) =>
   Boolean(
     value &&
       (value as Function).constructor &&
