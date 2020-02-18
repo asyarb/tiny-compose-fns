@@ -6,7 +6,8 @@
  *
  * @returns A new array containing the slice of `array`.
  */
-export const take = <T>(amount: number = 1, data: T[]) =>
-  Array.isArray(data)
-    ? data.slice(0, amount === null ? 1 : amount < 0 ? 0 : amount)
-    : []
+export const take = <T>(amount: number = 1, data: T[]) => {
+  if (!Array.isArray(data)) return []
+
+  return data.slice(0, amount === null ? 1 : amount < 0 ? 0 : amount)
+}

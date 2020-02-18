@@ -1,16 +1,5 @@
 import { isPlainObject, isFunction, isNumber } from './utils'
 
-export const chunk = (size, arr) =>
-  Array.isArray(arr) && isNumber(size)
-    ? arr.reduce(
-        (array, item, idx) =>
-          idx % size === 0
-            ? [...array, [item]]
-            : [...array.slice(0, -1), [...array.slice(-1)[0], item]],
-        []
-      )
-    : []
-
 export const compact = arr => (Array.isArray(arr) ? arr.filter(Boolean) : [])
 
 export const concat = (arr, vals) =>
