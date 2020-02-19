@@ -1,7 +1,7 @@
 import { SortableObject } from '../types'
 
 /**
- * Callback functino for sorting by a key in ascending order.
+ * Callback function for sorting by a key in ascending order.
  * @private
  */
 export const sortByKeyAsec = (key: string) => (

@@ -1,6 +1,7 @@
 import { SortableObject } from '../types'
+
 /**
- * Callback functino for sorting by a key in descending order.
+ * Callback function for sorting by a key in descending order.
  * @private
  */
 export const sortByKeyDesc = (key: string) => (

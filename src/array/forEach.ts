@@ -1,7 +1,5 @@
 import { isFunction } from '../utils/isFunction'
 
-type Callback<Item> = (currentValue: Item, index: number, array: Item[]) => void
-
 /**
  * Execute a provided function once for each array element.
  *
@@ -10,7 +8,10 @@ type Callback<Item> = (currentValue: Item, index: number, array: Item[]) => void
  *
  * @returns undefined.
  */
-export const forEach = <T>(callback: Callback<T>, data: T[]) => {
+export const forEach = <T>(
+  callback: (currentValue: T, index: number, array: T[]) => void,
+  data: T[]
+) => {
   if (!isFunction(callback)) return
   if (!Array.isArray(data)) return
 

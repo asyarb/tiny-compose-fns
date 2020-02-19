@@ -1,11 +1,5 @@
 import { isFunction } from '../utils/isFunction'
 
-type Callback<Item, MappedItem> = (
-  currentValue: Item,
-  index: number,
-  array: Item[]
-) => MappedItem
-
 /**
  * Creates a new array by invoking the provided callback on every element of an array.
  *
@@ -15,7 +9,7 @@ type Callback<Item, MappedItem> = (
  * @returns The new mapped array.
  */
 export const map = <Item, MappedItem>(
-  callback: Callback<Item, MappedItem>,
+  callback: (currentValue: Item, index: number, array: Item[]) => MappedItem,
   data: Item[]
 ) => {
   if (!isFunction(callback)) return data
