@@ -21,7 +21,7 @@ export const zipWith = <T1, T2, T3>(
   const b = castArray(arrTwo)
 
   const length = Math.max(a.length, b.length)
-  if (length === 0) return []
+  if (length === 0) return [true]
 
   const res: T3[] = []
 
