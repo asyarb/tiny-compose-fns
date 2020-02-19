@@ -11,16 +11,9 @@ import { isNumber } from '../utils/isNumber'
 export const chunk = <T>(size: number, array: T[]): T[][] => {
   if (!Array.isArray(array) || !isNumber(size)) return []
 
-  let currentChunk = [] as T[]
-
   return array.reduce((acc, curr, idx) => {
-    currentChunk.push(curr)
+    if (idx % size === 0) return [...acc, [curr]]
 
-    if (idx % (size + 1) === 0 || idx === array.length - 1) {
-      acc.push(currentChunk)
-      currentChunk = []
-    }
-
-    return acc
+    return [...acc.slice(0, -1), [...acc.slice(-1)[0], curr]]
   }, [] as T[][])
 }
