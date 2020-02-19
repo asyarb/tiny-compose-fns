@@ -8,8 +8,6 @@ describe('tail', () => {
   })
 
   it('returns empty array if given an empty input', () => {
-    expect(tail(undefined)).toEqual([])
-    expect(tail(null)).toEqual([])
     expect(tail([])).toEqual([])
   })
 })

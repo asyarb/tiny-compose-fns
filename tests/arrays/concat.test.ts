@@ -11,12 +11,4 @@ describe('concat', () => {
     expect(concat(arr, null)).toEqual([1, 2, 3, null])
     expect(concat(arr, undefined)).toEqual([1, 2, 3, undefined])
   })
-
-  it('returns an array of one undefined if given bad inputs', () => {
-    expect(concat(undefined, undefined)).toEqual([undefined])
-  })
-
-  it('returns an array of with one null if given null', () => {
-    expect(concat(null, null)).toEqual([null])
-  })
 })

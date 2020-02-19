@@ -8,9 +8,4 @@ describe('includes', () => {
     expect(includes(2, arr)).toBe(true)
     expect(includes(4, arr)).toBe(false)
   })
-
-  it('returns false if array is a bad value', () => {
-    expect(includes(1, undefined)).toBe(false)
-    expect(includes(1, null)).toBe(false)
-  })
 })

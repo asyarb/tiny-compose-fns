@@ -9,7 +9,5 @@ describe('last', () => {
 
   it('returns undefined if given an empty array', () => {
     expect(last([])).toBeUndefined()
-    expect(last(undefined)).toBeUndefined()
-    expect(last(null)).toBeUndefined()
   })
 })

@@ -15,17 +15,4 @@ describe('flatDepth', () => {
     expect(flatDepth(2, deepArr)).toEqual([arr, ...arr, ...arr])
     expect(deepArr).toEqual([[[arr]], [arr], arr])
   })
-
-  it('flattens a single level if num is undefined', () => {
-    expect(flatDepth(undefined, deepArr)).toEqual([[arr], arr, ...arr])
-  })
-
-  it('returns the provided array if num is not a number, but not undefined', () => {
-    expect(flatDepth(null, deepArr)).toEqual(deepArr)
-  })
-
-  it('returns an empty array if argument is bad', () => {
-    expect(flatDepth(1, undefined)).toEqual([])
-    expect(flatDepth(2, null)).toEqual([])
-  })
 })

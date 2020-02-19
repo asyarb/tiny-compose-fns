@@ -12,9 +12,4 @@ describe('slice', () => {
 
     expect(arr).toEqual([1, 2, 3])
   })
-
-  it('returns an empty array if provided value is not an array', () => {
-    expect(slice(0, 1, undefined)).toEqual([])
-    expect(slice(0, 1, null)).toEqual([])
-  })
 })

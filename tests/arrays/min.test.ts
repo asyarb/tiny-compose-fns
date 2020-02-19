@@ -10,9 +10,4 @@ describe('min', () => {
   it('returns undefined if array is empty', () => {
     expect(min([])).toBeUndefined()
   })
-
-  it('returns undefined if array is falsey', () => {
-    expect(min(null)).toBeUndefined()
-    expect(min(undefined)).toBeUndefined()
-  })
 })

@@ -11,11 +11,6 @@ const obj = {
 }
 
 describe('values', () => {
-  it('returns an empty array if given a non-object', () => {
-    expect(values(undefined)).toEqual([])
-    expect(values(null)).toEqual([])
-  })
-
   it('returns an empty array if given an empty object', () => {
     expect(values({})).toEqual([])
   })

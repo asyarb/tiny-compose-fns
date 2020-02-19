@@ -19,9 +19,4 @@ describe('indexOf', () => {
     expect(indexOf(undefined, doubleArr)).toBe(-1)
     expect(indexOf(null, doubleArr)).toBe(-1)
   })
-
-  it('returns -1 if passed an undefined or null collection to search', () => {
-    expect(indexOf(1, undefined)).toBe(-1)
-    expect(indexOf(1, null)).toBe(-1)
-  })
 })

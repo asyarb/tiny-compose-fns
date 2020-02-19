@@ -15,9 +15,4 @@ describe('flatDeep', () => {
 
     expect(deepArr).toEqual([[[arr]], [arr], arr])
   })
-
-  it('returns an empty array if argument is bad', () => {
-    expect(flatDeep(undefined)).toEqual([])
-    expect(flatDeep(null)).toEqual([])
-  })
 })

@@ -11,11 +11,6 @@ const obj = {
 }
 
 describe('has', () => {
-  it('returns false if passed an undefined or null obj', () => {
-    expect(has('foo', undefined)).toBe(false)
-    expect(has('foo', null)).toBe(false)
-  })
-
   it('returns false if given a non object', () => {
     expect(has('foo', ['foo'])).toBe(false)
   })

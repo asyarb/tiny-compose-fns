@@ -8,5 +8,5 @@ import { zipWith } from './zipWith'
  *
  * @returns An array containing the boolean values.
  */
-export const pairsEq = <T>(pairsA: T, pairsB: T) =>
-  zipWith((itemA: T, itemB: T) => itemA === itemB, pairsA, pairsB)
+export const pairsEq = <T>(pairsA: T[] | T, pairsB: T[] | T) =>
+  zipWith((itemA: T, itemB: T) => itemA === itemB, pairsA as T[], pairsB as T[])

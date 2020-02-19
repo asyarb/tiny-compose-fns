@@ -18,8 +18,6 @@ describe('fromEntries', () => {
   })
 
   it('returns an empty object if given a non-array', () => {
-    expect(fromEntries(undefined)).toEqual({})
-    expect(fromEntries(null)).toEqual({})
     expect(fromEntries('foo')).toEqual({})
     expect(fromEntries({})).toEqual({})
   })

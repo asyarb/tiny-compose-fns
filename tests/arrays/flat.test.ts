@@ -15,9 +15,4 @@ describe('flat', () => {
 
     expect(flat(holeArr)).toEqual([1, 2, 3, 4])
   })
-
-  it('returns an empty array if argument is bad', () => {
-    expect(flat(undefined)).toEqual([])
-    expect(flat(null)).toEqual([])
-  })
 })

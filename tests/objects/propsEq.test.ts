@@ -19,10 +19,6 @@ describe('propsEq', () => {
     expect(propsEq('hello.world.is', obj, obj)).toBe(true)
   })
 
-  it('returns false if inputs are falsey', () => {
-    expect(propsEq(null, null, null)).toBe(false)
-  })
-
   it('returns false if the provided key is not a string', () => {
     expect(propsEq('foo', obj, obj)).not.toBe(false)
   })

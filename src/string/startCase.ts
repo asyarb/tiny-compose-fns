@@ -12,6 +12,6 @@ export const startCase = (string: string) =>
   isString(string)
     ? string
         .replace(/_/g, ' ')
-        .replace(/([a-z])([A-Z])/g, (str, $1, $2) => $1 + ' ' + $2)
-        .replace(/(\s|^)(\w)/g, (str, $1, $2) => $1 + $2.toUpperCase())
+        .replace(/([a-z])([A-Z])/g, (_str, $1, $2) => $1 + ' ' + $2)
+        .replace(/(\s|^)(\w)/g, (_str, $1, $2) => $1 + $2.toUpperCase())
     : ''

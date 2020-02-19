@@ -18,12 +18,4 @@ describe('splice', () => {
     expect(splice(1, 1, 4, arr)).toEqual([1, 4, 3])
     expect(splice(1, 2, 4, arr)).toEqual([1, 4])
   })
-
-  it('returns an empty array if given falsey inputs', () => {
-    expect(splice(null, null, null, null)).toEqual([])
-  })
-
-  it('splices to the front of the array if given an invalid start index parameter', () => {
-    expect(splice(undefined, 0, 4, arr)).toEqual([4, 1, 2, 3])
-  })
 })

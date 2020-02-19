@@ -1,25 +1,13 @@
 import { merge } from '../../src/object/merge'
 
+const obj1 = { foo: 'bar' }
+const obj2 = { hello: 'world' }
+const obj3 = { jest: 'is great!' }
+
 describe('merge', () => {
-  const obj1 = { foo: 'bar' }
-  const obj2 = { hello: 'world' }
-  const obj3 = { jest: 'is great!' }
-
-  it('returns an empty object if given undefined or null inputs', () => {
-    expect(merge(null, undefined)).toEqual({})
-    expect(merge(null, null)).toEqual({})
-  })
-
   it('returns an empty object if given empty sources', () => {
-    expect(merge({}, undefined)).toEqual({})
-    expect(merge({}, null)).toEqual({})
     expect(merge({}, {})).toEqual({})
     expect(merge({}, [])).toEqual({})
-  })
-
-  it('returns an empty object if given an empty target', () => {
-    expect(merge(undefined, {})).toEqual({})
-    expect(merge(undefined, [])).toEqual({})
   })
 
   it('merges strings successfully', () => {

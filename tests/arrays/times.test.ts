@@ -2,10 +2,6 @@ import { times } from '../../src/array/times'
 import { noop } from '../../src/utils/noop'
 
 describe('times', () => {
-  it('returns an empty array if provided falsey values', () => {
-    expect(times(null, null)).toEqual([])
-  })
-
   it('returns an empty array if the provided number is 0', () => {
     expect(times(noop, 0)).toEqual([])
   })

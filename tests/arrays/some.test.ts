@@ -14,14 +14,7 @@ describe('some', () => {
     expect(some(i => i.user === 'fred', users)).toBe(true)
   })
 
-  it('throws error if function is bad', () => {
-    expect(() => some(undefined, arr)).toThrow()
-    expect(() => some(null, arr)).toThrow()
-  })
-
-  it('returns false if arr is bad or empty', () => {
-    expect(some(cb, undefined)).toBe(false)
-    expect(some(cb, null)).toBe(false)
+  it('returns false if arr is empty', () => {
     expect(some(cb, [])).toBe(false)
   })
 })

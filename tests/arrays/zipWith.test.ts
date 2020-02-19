@@ -18,14 +18,4 @@ describe('zipWith', () => {
     expect(zipWith((a, b) => a + b, arr, arr)).toEqual([2, 4, 6])
     expect(zipWith((a, b) => a === b, arr, arr)).toEqual([true, true, true])
   })
-
-  it('returns an empty array if iteratee is not a function.', () => {
-    expect(zipWith(null, arr, arr)).toEqual([])
-  })
-
-  it('zips falsey inputs based on the provided iteratee', () => {
-    //@ts-ignore
-    expect(zipWith(() => {})).toEqual([undefined])
-    expect(zipWith((a, b) => [a, b], null, null)).toEqual([[null, null]])
-  })
 })

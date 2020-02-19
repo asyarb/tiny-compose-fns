@@ -13,9 +13,4 @@ describe('entries', () => {
       ['hello', 'world'],
     ])
   })
-
-  it('returns an empty array if given a non-object', () => {
-    expect(entries(undefined)).toEqual([])
-    expect(entries(null)).toEqual([])
-  })
 })

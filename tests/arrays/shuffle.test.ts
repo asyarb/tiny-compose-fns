@@ -8,11 +8,6 @@ describe('shuffle', () => {
     expect(bigArr).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9])
   })
 
-  it('returns an empty array if provided a non array input', () => {
-    expect(shuffle(undefined)).toEqual([])
-    expect(shuffle(null)).toEqual([])
-  })
-
   it('returns an empty array if given an empty array', () => {
     expect(shuffle([])).toEqual([])
   })

@@ -15,11 +15,6 @@ describe('get', () => {
     expect(get('hello.is.great', obj)).toBe('right?')
   })
 
-  it('returns undefined if passed an undefined or null obj', () => {
-    expect(get('foo', undefined)).toBeUndefined()
-    expect(get('foo', null)).toBeUndefined()
-  })
-
   it('returns undefined if given a non object', () => {
     expect(get('foo', ['foo'])).toBeUndefined()
   })

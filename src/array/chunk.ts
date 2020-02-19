@@ -16,7 +16,7 @@ export const chunk = <T>(size: number, array: T[]): T[][] => {
   return array.reduce((acc, curr, idx) => {
     currentChunk.push(curr)
 
-    if (idx % size === 0 || idx === array.length - 1) {
+    if (idx % (size + 1) === 0 || idx === array.length - 1) {
       acc.push(currentChunk)
       currentChunk = []
     }

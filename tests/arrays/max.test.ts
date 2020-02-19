@@ -10,9 +10,4 @@ describe('max', () => {
   it('returns undefined if array is empty', () => {
     expect(max([])).toBeUndefined()
   })
-
-  it('returns undefined if array is falsey', () => {
-    expect(max(null)).toBeUndefined()
-    expect(max(undefined)).toBeUndefined()
-  })
 })

@@ -7,9 +7,4 @@ describe('compact', () => {
     expect(compact(falseyArr)).toEqual([1, 2, 3])
     expect(falseyArr).toEqual([false, 0, '', undefined, NaN, 1, 2, 3])
   })
-
-  it('returns an empty array given bad inputs', () => {
-    expect(compact(undefined)).toEqual([])
-    expect(compact(null)).toEqual([])
-  })
 })

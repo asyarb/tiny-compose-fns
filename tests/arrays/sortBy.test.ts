@@ -28,14 +28,7 @@ describe('sortBy', () => {
     ])
   })
 
-  it('returns an empty array if array is a bad value', () => {
-    expect(sortBy('', undefined)).toEqual([])
-    expect(sortBy('', null)).toEqual([])
-  })
-
   it('returns the same value if sortBy key is not valid for the array', () => {
-    expect(sortBy(undefined, arr)).toEqual(arr)
-    expect(sortBy(null, arr)).toEqual(arr)
     expect(sortBy('foo', arr)).toEqual(arr)
   })
 })

@@ -5,10 +5,6 @@ describe('upperFirst', () => {
     expect(upperFirst('foo')).toBe('Foo')
   })
 
-  it('returns an empty string on undefined or null', () => {
-    expect(upperFirst(null)).toBe('')
-  })
-
   it('returns an empty string if given an empty string', () => {
     expect(upperFirst('')).toBe('')
   })

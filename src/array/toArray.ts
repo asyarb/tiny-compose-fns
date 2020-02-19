@@ -18,7 +18,6 @@ export const toArray: ArgumentOverloads = <T>(value: ObjectArgument<T> | T) => {
   if (isPlainObject(value)) return Object.values(value)
 
   if (!value) return []
-  const test = value
 
-  return castArray(test)
+  return castArray(value as T)
 }

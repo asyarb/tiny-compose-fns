@@ -5,7 +5,8 @@
  *
  * @returns The random element.
  */
-export const sample = <T>(array: T[]) =>
-  Array.isArray(array) && array.length !== 0
-    ? array[Math.floor(Math.random() * array.length)]
-    : undefined
+export const sample = <T>(array: T[]) => {
+  if (!Array.isArray(array) || array.length === 0) return
+
+  return array[Math.floor(Math.random() * array.length)]
+}

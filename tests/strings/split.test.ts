@@ -1,18 +1,8 @@
 import { split } from '../../src/string/split'
 
+const str = 'foo bar baz'
+
 describe('split', () => {
-  const str = 'foo bar baz'
-
-  it('returns an array with a single empty string if given undefined parameters', () => {
-    expect(split(null, undefined)).toEqual([''])
-    expect(split(null, null)).toEqual([''])
-  })
-
-  it('returns an array with the string if delimiter is undefined or null', () => {
-    expect(split(undefined, str)).toEqual([str])
-    expect(split(null, str)).toEqual([str])
-  })
-
   it('returns an array with the string if the delimiter is not in the string', () => {
     expect(split('boo', str)).toEqual([str])
   })

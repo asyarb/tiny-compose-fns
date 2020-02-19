@@ -9,7 +9,5 @@ describe('first', () => {
 
   it('returns undefined if given an empty array', () => {
     expect(first([])).toBeUndefined()
-    expect(first(undefined)).toBeUndefined()
-    expect(first(null)).toBeUndefined()
   })
 })
