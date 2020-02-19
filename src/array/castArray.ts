@@ -5,7 +5,7 @@
  *
  * @returns The cast array.
  */
-export const castArray = <T>(value: T): T[] => {
+export const castArray = <T>(value: T | T[]): T[] => {
   if (!value) return []
 
   return Array.isArray(value) ? value : [value]

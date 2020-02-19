@@ -12,8 +12,8 @@ import { isFunction } from '../utils/isFunction'
  */
 export const zipWith = <T1, T2, T3>(
   callback: (itemA: T1, itemB: T2) => T3,
-  arrOne: T1,
-  arrTwo: T2
+  arrOne: T1[],
+  arrTwo: T2[]
 ) => {
   if (!isFunction(callback)) return []
 
