@@ -6,7 +6,10 @@
  *
  * @returns The merged object.
  */
-export const merge = (targetObject: object, ...sourceObjects: object[]) => {
+export const merge = (
+  targetObject: object | string,
+  ...sourceObjects: object[] | string[]
+) => {
   const target = Object.assign({}, targetObject)
 
   return Object.assign(target, ...sourceObjects)
