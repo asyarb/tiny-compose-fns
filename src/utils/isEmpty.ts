@@ -8,7 +8,7 @@ import { isMapOrSet } from '../helpers/isMapOrSet'
  * @returns true if the provided collection is empty, false otherwise.
  */
 export const isEmpty = (value: unknown) => {
-  if (isMapOrSet(value)) return Boolean((value as Set<unknown>).size)
+  if (isMapOrSet(value)) return (value as Set<unknown>).size === 0
 
   return (
     [Object, Array].includes(((value as any) || {}).constructor as any) &&

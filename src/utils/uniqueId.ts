@@ -5,12 +5,12 @@
  *
  * @returns The unique ID.
  */
-export const uniqueId = (prefix?: string) => {
+export const uniqueId = (() => {
   let num = 0
 
-  return () => {
+  return (prefix?: string) => {
     prefix = prefix ? String(prefix) : ''
     num += 1
     return prefix + num
   }
-}
+})()
