@@ -1,5 +1,3 @@
-type SomeCallback<T> = (currentElement: T, index: number, array: T[]) => boolean
-
 /**
  * Checks if the provided callback returns truthy for any element of an array.
  *
@@ -8,5 +6,7 @@ type SomeCallback<T> = (currentElement: T, index: number, array: T[]) => boolean
  *
  * @returns true if any element passes the function condition, false otherwise.
  */
-export const some = <T>(callback: SomeCallback<T>, array: T[]) =>
-  Array.isArray(array) ? array.some(callback) : false
+export const some = <T>(
+  callback: (currentElement: T, index: number, array: T[]) => boolean,
+  array: T[]
+) => (Array.isArray(array) ? array.some(callback) : false)
