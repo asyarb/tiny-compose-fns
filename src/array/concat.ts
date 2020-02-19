@@ -6,5 +6,8 @@ import { castArray } from './castArray'
  * @param array - The array to concatenate.
  * @param values - The values to concatenate.
  */
-export const concat = <T1, T2>(array: T1[], values: T2) =>
-  Array.isArray(array) ? [...array, ...castArray(values)] : [array]
+export const concat = <T1, T2>(array: T1[], values: T2) => {
+  if (!Array.isArray(array)) return [array]
+
+  return [...array, ...castArray(values)]
+}
