@@ -1,5 +1,3 @@
-type FindCallback<T> = (currentElement: T, index: number, array: T[]) => boolean
-
 /**
  * Finds the value of the first element in an array that satisfies the provided function.
  *
@@ -8,5 +6,7 @@ type FindCallback<T> = (currentElement: T, index: number, array: T[]) => boolean
  *
  * @returns The value or undefined if not found.
  */
-export const find = <T>(callback: FindCallback<T>, array: T[]) =>
-  Array.isArray(array) ? array.find(callback) : undefined
+export const find = <T>(
+  callback: (currentElement: T, index: number, array: T[]) => boolean,
+  array: T[]
+) => (Array.isArray(array) ? array.find(callback) : undefined)

@@ -1,11 +1,5 @@
 import { isFunction } from '../utils/isFunction'
 
-type Callback<Item> = (
-  currentValue: Item,
-  index: number,
-  array: Item[]
-) => boolean
-
 /**
  * Creates a new array by including values that return true based on the provided callback.
  *
@@ -14,7 +8,10 @@ type Callback<Item> = (
  *
  * @returns The new filtered array.
  */
-export const filter = <T>(callback: Callback<T>, data: T[]) => {
+export const filter = <T>(
+  callback: (currentValue: T, index: number, array: T[]) => boolean,
+  data: T[]
+) => {
   if (!isFunction(callback)) return data
   if (!Array.isArray(data)) return []
 

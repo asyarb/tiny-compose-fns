@@ -1,5 +1,3 @@
-type SortWithCallback<T> = (a: T, b: T) => number
-
 /**
  * Sorts an array by the provided callback function.
  *
@@ -8,5 +6,5 @@ type SortWithCallback<T> = (a: T, b: T) => number
  *
  * @return A new array containing the sorted contents.
  */
-export const sortWith = <T>(callback: SortWithCallback<T>, array: T[]) =>
+export const sortWith = <T>(callback: (a: T, b: T) => number, array: T[]) =>
   Array.isArray(array) ? array.map(i => i).sort(callback) : []

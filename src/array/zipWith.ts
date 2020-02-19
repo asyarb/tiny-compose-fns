@@ -1,8 +1,6 @@
 import { castArray } from './castArray'
 import { isFunction } from '../utils/isFunction'
 
-type ZipWithCallback<T1, T2, T3> = (itemA: T1, itemB: T2) => T3
-
 /**
  * Creates an array of grouped elements based on the provided callback. The callback is invoked with the appropriate index values of each array for the current iteration.
  *
@@ -13,7 +11,7 @@ type ZipWithCallback<T1, T2, T3> = (itemA: T1, itemB: T2) => T3
  * @returns The new array of grouped elements.
  */
 export const zipWith = <T1, T2, T3>(
-  callback: ZipWithCallback<T1, T2, T3>,
+  callback: (itemA: T1, itemB: T2) => T3,
   arrOne: T1,
   arrTwo: T2
 ) => {
