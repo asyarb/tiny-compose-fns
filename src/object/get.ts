@@ -12,11 +12,11 @@ export const get = <T>(
   object: { [key: string]: any },
   defaultValue?: T
 ) => {
-  const splitPath = (path as string).split ? (path as string).split('.') : path
+  const splitPath = path?.split('.') ?? path
 
   for (let p = 0; p < splitPath.length; p++) {
-    object = object ? object[path[p]] : undefined
+    object = object?.[splitPath?.[p]] ?? undefined
   }
 
-  return object === undefined ? defaultValue : object
+  return object ?? defaultValue
 }
